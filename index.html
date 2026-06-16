@@ -148,15 +148,36 @@ h1.title{font-family:'Anton';font-size:clamp(38px,8vw,82px);line-height:.92;lett
 .champ{background:linear-gradient(110deg,#2a2410,#1c2542);border:1px solid var(--gold);border-radius:12px;padding:11px 14px;margin-bottom:10px;font-weight:700;text-align:center;font-size:14px}
 .champ .fl{width:22px;height:15px;border-radius:3px;display:inline-block;vertical-align:middle;overflow:hidden}
 .champ .fl svg{width:100%;height:100%}
-.grped{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:10px;max-height:300px;overflow-y:auto}
-.gpe{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:5px 0;border-bottom:1px solid var(--line)}
+.grped{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;max-height:60vh;overflow-y:auto}
+.grpehead{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 0 8px 64px;position:sticky;top:-12px;background:var(--panel);z-index:2}
+.grpehead span{font-family:'Archivo Narrow';font-weight:800;font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:center}
+.grpehead i{display:block;font-style:normal;font-size:9px;opacity:.7}
+.gpe{display:flex;align-items:stretch;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}
 .gpe:last-child{border-bottom:none}
-.gpeh{flex:0 0 auto;font-family:'Anton';font-size:12px;padding:3px 9px;border-radius:7px}
-.gpchip{flex:1 1 auto;min-width:120px;text-align:left;background:var(--panel2);border:1px solid var(--line);color:var(--ink);font-family:'Archivo';font-weight:700;font-size:12px;padding:7px 10px;border-radius:8px;cursor:pointer}
-.gpchip.q1{border-color:rgba(31,206,130,.5);box-shadow:inset 3px 0 0 var(--grass)}
-.gpchip.q2{border-color:rgba(58,134,255,.5);box-shadow:inset 3px 0 0 var(--sky)}
-.gpchip.q3{border-color:rgba(255,207,63,.5);box-shadow:inset 3px 0 0 var(--gold)}
-.gpchip.q4{opacity:.6}
+.gpeh{flex:0 0 56px;display:flex;align-items:center;justify-content:center;font-family:'Anton';font-size:12px;border-radius:9px;text-align:center;line-height:1.05}
+.gpcols{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.gpslot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:8px 5px 6px;position:relative;text-align:center}
+.gpslot .gprk{position:absolute;top:4px;left:6px;font-family:'Anton';font-size:11px;opacity:.5}
+.gpslot .gpfl{width:34px;height:23px;border-radius:4px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.gpslot .gpfl svg{width:100%;height:100%;display:block}
+.gpslot .gpnm{font-family:'Archivo';font-weight:700;font-size:11px;line-height:1.15}
+.gpslot .gparr{display:flex;gap:4px;margin-top:2px}
+.gpslot .gparr button{width:26px;height:24px;border-radius:7px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);font-size:11px;cursor:pointer;display:grid;place-items:center}
+.gpslot .gparr button:active{background:var(--gold);color:#241a00;transform:scale(.92)}
+.gpslot.q1{border-color:rgba(31,206,130,.55);box-shadow:inset 0 3px 0 var(--grass)}
+.gpslot.q2{border-color:rgba(58,134,255,.55);box-shadow:inset 0 3px 0 var(--sky)}
+.gpslot.q3{border-color:rgba(255,207,63,.55);box-shadow:inset 0 3px 0 var(--gold)}
+.gpslot.q4{opacity:.5;box-shadow:inset 0 3px 0 #51607f}
+@media(max-width:560px){
+  .grpehead{display:none}
+  .gpe{flex-direction:column;gap:6px;padding:10px 0}
+  .gpeh{flex:0 0 auto;align-self:flex-start;padding:4px 12px}
+  .gpcols{grid-template-columns:repeat(2,1fr)}
+  .gpslot{flex-direction:row;justify-content:flex-start;gap:8px;padding:8px 9px;text-align:left}
+  .gpslot .gprk{position:static}
+  .gpslot .gpnm{flex:1}
+  .gpslot .gparr{margin-top:0}
+}
 .zoomctl{position:absolute;right:9px;bottom:9px;display:flex;flex-direction:column;gap:5px;z-index:4}
 .zoomctl button{width:32px;height:32px;border-radius:9px;border:1px solid var(--line);background:rgba(10,14,26,.82);color:var(--ink);font-size:16px;font-weight:800;cursor:pointer;display:grid;place-items:center;transition:var(--fast);backdrop-filter:blur(6px)}
 .zoomctl button:hover{background:var(--gold);color:#11172b}
@@ -2005,11 +2026,13 @@ function renderKO(){
     const basis=`classement des groupes en direct${anyResult?'':' (0 pt partout pour l’instant — ordre par départage / classement FIFA)'}`;
     const infoNote=`<div class="brkinfo">ℹ️ Tableau classé selon le <b>${basis}</b>, mis à jour automatiquement avec les résultats${simPlaceEdited?' — <b>modifié manuellement</b> (↺ Réinitialiser pour revenir au direct)':''}. Ajuste avec « ⚙︎ Régler les groupes ».</div>`;
     const ctrl=`<div class="brkctrl"><button class="favtgl" id="brkAuto">🔮 Pronostic auto</button><button class="favtgl" id="brkReset">↺ Réinitialiser</button><button class="favtgl" id="brkLink">🔗 Partager le lien</button><button class="favtgl${brkGrpOpen?' on':''}" id="brkGrpToggle">⚙︎ Régler les groupes</button></div>`;
-    let grped=`<div class="grped" id="grped"${brkGrpOpen?'':' style="display:none"'}>`;
+    let grped=`<div class="grped" id="grped"${brkGrpOpen?'':' style="display:none"'}>
+      <div class="grpehead"><span>1ᵉʳ <i>qualifié</i></span><span>2ᵉ <i>qualifié</i></span><span>3ᵉ <i>repêchable</i></span><span>4ᵉ <i>éliminé</i></span></div>`;
     Object.keys(groups).forEach(g=>{const col=GCOLORS[g];
-      grped+=`<div class="gpe"><span class="gpeh" style="background:${col};color:${inkFor(col)}">Gr. ${g}</span>`+
-        simPlace[g].map((t,i)=>`<button class="gpchip q${i+1}" data-gpro="${g}|${i}">${i+1}. ${t}</button>`).join('')+`</div>`;});
-    grped+=`<div class="prednote" style="margin-top:6px">Ordre initial = <b>classement actuel</b> de chaque groupe. Touchez une équipe pour la <b>monter d'une place</b> (1ᵉʳ et 2ᵉ qualifiés ; les 8 meilleurs 3ᵉˢ retenus au classement FIFA).</div></div>`;
+      grped+=`<div class="gpe"><span class="gpeh" style="background:${col};color:${inkFor(col)}">Groupe ${g}</span><div class="gpcols">`+
+        simPlace[g].map((t,i)=>`<div class="gpslot q${i+1}"><span class="gprk">${i+1}</span>${flagBox(t,'gpfl')}<span class="gpnm">${t}</span><span class="gparr">${i>0?`<button class="gpup" data-gpro="${g}|${i}|up" title="Monter">▲</button>`:''}${i<3?`<button class="gpdn" data-gpro="${g}|${i}|dn" title="Descendre">▼</button>`:''}</span></div>`).join('')+
+        `</div></div>`;});
+    grped+=`<div class="prednote" style="margin-top:8px">Ordre initial = <b>classement en direct</b> de chaque groupe. Utilisez ▲▼ pour réordonner : les <b>1ᵉʳ et 2ᵉ</b> sont qualifiés, les <b>8 meilleurs 3ᵉˢ</b> (au classement FIFA) sont repêchés.</div></div>`;
     const teamOpts=['<option value="">🔎 Filtrer une équipe…</option>'].concat(
       Object.values(groups).flat().sort((a,b)=>a.localeCompare(b,'fr')).map(t=>`<option value="${t}"${t===brkFilterTeam?' selected':''}>${t}</option>`)).join('');
     const filt=`<div class="brkfilt"><select id="brkTeamSel">${teamOpts}</select>${brkFilterTeam?'<button class="favtgl" id="brkClrTeam">✕ Filtre</button>':''}</div>`;
@@ -2334,7 +2357,11 @@ document.addEventListener('click',e=>{
     const mm=KOBYNUM[+mn];if(mm&&mm.phase==='Finale')setTimeout(()=>confetti(),60);
     renderKO();return;}
   const gp=e.target.closest('[data-gpro]');
-  if(gp){const[g,i]=gp.dataset.gpro.split('|');const ix=+i;if(ix>0){const a=simPlace[g];[a[ix-1],a[ix]]=[a[ix],a[ix-1]];}simPlaceEdited=true;renderKO();return;}
+  if(gp){const parts=gp.dataset.gpro.split('|');const g=parts[0],ix=+parts[1],dir=parts[2];const a=simPlace[g];
+    if(dir==='up'&&ix>0){[a[ix-1],a[ix]]=[a[ix],a[ix-1]];}
+    else if(dir==='dn'&&ix<3){[a[ix+1],a[ix]]=[a[ix],a[ix+1]];}
+    else if(!dir&&ix>0){[a[ix-1],a[ix]]=[a[ix],a[ix-1]];}
+    simPlaceEdited=true;buzz(8);renderKO();return;}
   const tzl=e.target.closest('[data-tzlocal]');
   if(tzl){if(tzl.dataset.tzlocal!==tzMode){tzMode=tzl.dataset.tzlocal;for(const k in _fc)delete _fc[k];
     document.querySelectorAll('#tzseg button').forEach(x=>x.classList.toggle('on',x.dataset.tz===tzMode));
