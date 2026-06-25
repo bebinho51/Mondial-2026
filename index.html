@@ -351,6 +351,42 @@ html{-webkit-tap-highlight-color:transparent}
 .caldmatches{padding:0 10px}
 .calm:last-child{border-bottom:none}
 body.brkfull{overflow:hidden}
+/* === Parcours d'équipe === */
+.tpath-pick{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.tpath-pick .tpl{font-family:'Archivo Narrow';font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:11px;color:var(--muted);white-space:nowrap}
+.tpath-pick .sel{flex:1}
+.tpath-status{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#101a3d,#1c2542);border:1px solid var(--line);border-radius:14px;padding:13px 15px;margin-bottom:16px}
+.tpath-status .fl{width:46px;height:31px;border-radius:5px;overflow:hidden;flex:0 0 auto;box-shadow:0 3px 10px rgba(0,0,0,.5)}
+.tpath-status .fl svg{width:100%;height:100%;display:block}
+.tpath-status b{font-family:'Anton';font-size:19px}
+.tpath-status .tps{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.tpath{position:relative;padding-left:8px}
+.tpstep{position:relative;padding:0 0 4px 42px;margin-bottom:10px}
+.tpstep::before{content:"";position:absolute;left:15px;top:30px;bottom:-10px;width:2px;background:var(--line)}
+.tpstep:last-of-type::before{display:none}
+.tpdot{position:absolute;left:0;top:2px;width:32px;height:32px;border-radius:50%;background:var(--panel2);border:2px solid var(--line);display:grid;place-items:center;font-size:13px;font-weight:800;color:var(--muted);z-index:1}
+.tpstep.won .tpdot{border-color:var(--grass);color:var(--grass)}
+.tpstep.out .tpdot{border-color:var(--accent);color:var(--accent)}
+.tpcard{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:11px 13px;cursor:pointer;transition:var(--fast)}
+.tpcard:active{transform:scale(.99)}
+.tpstep.won .tpcard{border-color:rgba(31,206,130,.4)}
+.tpstep.out .tpcard{border-color:rgba(255,46,99,.4);opacity:.85}
+.tpphase{font-family:'Archivo Narrow';font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:10.5px;color:var(--muted);margin-bottom:5px}
+.tprow{display:flex;align-items:center;gap:7px;font-size:15px;flex-wrap:wrap}
+.tprow .tpvs{color:var(--muted);font-style:italic;font-size:13px}
+.tprow .tpfl{width:26px;height:18px;border-radius:3px;overflow:hidden;flex:0 0 auto}
+.tprow .tpfl svg{width:100%;height:100%;display:block}
+.tprow b{font-family:'Archivo';font-weight:700}
+.tppend{color:var(--muted);font-style:italic;font-weight:600}
+.tpsc{margin-left:auto;font-family:'Anton';font-size:18px}
+.tpsc.win{color:var(--grass)}.tpsc.lose{color:var(--accent)}
+.tpsc i{font-size:10px;font-style:normal;color:var(--muted)}
+.tpwhen{margin-left:auto;font-size:11.5px;color:var(--muted);font-family:'Archivo Narrow';font-weight:600}
+.tpmeta{font-size:11.5px;color:var(--muted);margin-top:5px;font-family:'Archivo Narrow'}
+.tpend{border-radius:12px;padding:13px 15px;margin:4px 0 0 42px;font-family:'Anton';font-size:15px;text-align:center}
+.tpend.champ{background:linear-gradient(135deg,#2a2410,#3a2f0a);border:1px solid rgba(255,207,63,.5);color:var(--gold)}
+.tpend.out{background:rgba(255,46,99,.08);border:1px solid rgba(255,46,99,.35);color:#ff8aa6;font-family:'Archivo';font-weight:700;font-size:13px}
+.tpempty{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 18px;text-align:center;color:var(--muted);font-size:14px;line-height:1.6}
 #koBracket.full{position:fixed;inset:0;z-index:150;background:#081730;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 12px calc(24px + env(safe-area-inset-bottom,0px))}
 .brkheadbar{position:sticky;top:0;z-index:8;display:flex;align-items:center;gap:12px;background:rgba(8,23,48,.96);backdrop-filter:blur(8px);margin:0 -12px 10px;padding:calc(10px + env(safe-area-inset-top,0px)) 12px 10px;border-bottom:1px solid rgba(255,207,63,.25)}
 #brkBack{background:var(--gold);color:#241a00;font-family:'Anton';font-size:15px;letter-spacing:.02em;border:none;border-radius:999px;padding:10px 18px;cursor:pointer;box-shadow:0 6px 18px -6px rgba(255,207,63,.6)}
@@ -579,6 +615,81 @@ canvas.confetti{position:fixed;inset:0;z-index:300;pointer-events:none}
 .cmpnote{margin-top:14px;background:rgba(58,134,255,.1);border:1px solid rgba(58,134,255,.35);border-radius:12px;padding:11px 13px;font-size:13px;text-align:center}
 /* === Suivi phase finale === */
 .fosum{background:linear-gradient(135deg,#101a3d,#1c2542);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin-bottom:16px;box-shadow:var(--shadow);cursor:pointer}
+/* === Accueil : classement en direct === */
+.homesec{margin:18px 0}
+.homesec-h{display:flex;align-items:center;gap:10px;margin-bottom:11px;font-family:'Anton';font-size:17px;letter-spacing:.02em}
+.homesec-h>span:first-child{flex:1}
+.homesec-sub{font-family:'Archivo Narrow';font-weight:700;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.livetag{font-family:'Archivo Narrow';font-weight:800;font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;animation:lvp 1.4s infinite}
+.mggrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:560px){.mggrid{grid-template-columns:repeat(3,1fr)}}
+.mgcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.mghead{font-family:'Anton';font-size:12.5px;padding:6px 10px;letter-spacing:.03em}
+.mgrow{display:flex;align-items:center;gap:7px;padding:6px 9px;border-top:1px solid var(--line)}
+.mgrow.q{background:rgba(31,206,130,.08)}
+.mgrow.q3{background:rgba(255,207,63,.09)}
+.mgrow .mgpos{font-family:'Anton';font-size:12px;color:var(--muted);width:14px;flex:0 0 auto}
+.mgrow.q .mgpos{color:var(--grass)}
+.mgrow.q3 .mgpos{color:var(--gold)}
+.mgrow .mgfl{width:22px;height:15px;border-radius:2px;overflow:hidden;flex:0 0 auto;box-shadow:0 1px 2px rgba(0,0,0,.4)}
+.mgrow .mgfl svg{width:100%;height:100%;display:block}
+.mgrow .mgnm{flex:1;font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mgrow .mgpts{font-family:'Anton';font-size:14px}
+.qualbox{display:flex;flex-direction:column;gap:11px}
+.qualrow{display:flex;flex-direction:column;gap:7px}
+.qlbl{font-family:'Archivo Narrow';font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+.qlbl.q1{color:var(--grass)}.qlbl.q2{color:var(--sky)}.qlbl.q3{color:var(--gold)}
+.qchips{display:flex;flex-wrap:wrap;gap:6px}
+.qchip{display:inline-flex;align-items:center;gap:6px;background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:5px 11px 5px 6px;font-size:12.5px;font-weight:700;cursor:pointer;transition:var(--fast)}
+.qchip:active{transform:scale(.95)}
+.qchip.c1{border-color:rgba(31,206,130,.4)}
+.qchip.c2{border-color:rgba(58,134,255,.4)}
+.qchip.c3{border-color:rgba(255,207,63,.4)}
+.qchip .qfl{width:22px;height:15px;border-radius:2px;overflow:hidden;flex:0 0 auto}
+.qchip .qfl svg{width:100%;height:100%;display:block}
+/* === Phase finale style FotMob === */
+.fotabs{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 0 10px;margin-bottom:4px}
+.fotabs::-webkit-scrollbar{display:none}
+.fotabs button{flex:0 0 auto;background:var(--panel2);border:1px solid var(--line);color:var(--muted);font-family:'Archivo';font-weight:800;font-size:14px;padding:10px 18px;border-radius:999px;cursor:pointer;transition:var(--fast)}
+.fotabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fotabs button:active{transform:scale(.96)}
+.fohdr{font-family:'Anton';font-size:18px;letter-spacing:.02em;margin:6px 2px 12px}
+.fobracket{display:flex;flex-direction:column;gap:18px}
+.fopair{position:relative}
+.fopcards{display:flex;flex-direction:column;gap:12px}
+.focard2{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;cursor:pointer;transition:var(--fast);box-shadow:0 4px 14px -8px rgba(0,0,0,.5)}
+.focard2:active{transform:scale(.99)}
+.fobadge{display:flex;align-items:center;gap:8px;padding:9px 13px 7px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.foas{font-family:'Archivo Narrow';font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:rgba(255,255,255,.05);border-radius:6px;padding:2px 8px}
+.focf{font-family:'Archivo Narrow';font-weight:800;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--grass);background:rgba(31,206,130,.1);border-radius:6px;padding:2px 8px}
+.fostadm{font-size:11.5px;color:var(--muted);font-family:'Archivo Narrow';font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fostadm.solo{margin-left:0}
+.focard2body{display:flex;align-items:stretch;padding:11px 13px;gap:10px}
+.foteams2{flex:1;display:flex;flex-direction:column;gap:9px;min-width:0}
+.fotr{display:flex;align-items:center;gap:9px;min-width:0}
+.fotr .foflag{width:28px;height:19px;border-radius:3px;overflow:hidden;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.fotr .foflag svg{width:100%;height:100%;display:block}
+.fotr .foflag.empty{background:repeating-linear-gradient(45deg,var(--panel2),var(--panel2) 4px,transparent 4px,transparent 8px);border:1px solid var(--line)}
+.fotr .fonm{flex:1;font-family:'Archivo';font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fotr .fonum{font-family:'Anton';font-size:20px;flex:0 0 auto}
+.fotr .fonum i{font-size:10px;font-style:normal;color:var(--muted)}
+.fotr.won .fonm{color:var(--ink);font-weight:800}
+.fotr.won .fonum{color:var(--gold)}
+.fotr.lost{opacity:.45}
+.fosep2{width:1px;background:var(--line);flex:0 0 auto}
+.fortime{flex:0 0 auto;display:flex;flex-direction:column;justify-content:center;text-align:center;font-size:11.5px;color:var(--muted);font-family:'Archivo Narrow';font-weight:600;min-width:62px;line-height:1.5}
+.fortime b{font-family:'Anton';color:var(--ink);font-size:16px;font-weight:400}
+.fortime .fotz{font-size:9px;opacity:.7}
+.folivedot{animation:lvp 1.4s infinite}
+.foconn{position:relative;margin:10px 0 0 18px;padding-left:22px}
+.foconn::before{content:"";position:absolute;left:0;top:-30px;bottom:50%;width:2px;background:var(--line)}
+.foconn::after{content:"";position:absolute;left:0;top:50%;width:20px;height:2px;background:var(--line)}
+.foconncard{background:var(--panel2);border:1px dashed var(--line);border-radius:12px;padding:10px 13px;cursor:pointer}
+.foconnstad{font-size:12px;color:var(--muted);font-family:'Archivo Narrow';font-weight:600}
+.foconnnext{font-family:'Anton';font-size:13px;color:var(--gold);margin-top:2px}
+.foconnline{display:none}
+.fofinal{max-width:420px;margin:0 auto}
+.fofinal .focard2{border-color:rgba(255,207,63,.4)}
 .fosum.live{border-color:rgba(255,46,99,.5)}
 .fosum.champ{background:linear-gradient(135deg,#2a2410,#3a2f0a);border-color:rgba(255,207,63,.55)}
 .fosumk{font-family:'Archivo Narrow';font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:6px}
@@ -713,14 +824,15 @@ canvas.confetti{position:fixed;inset:0;z-index:300;pointer-events:none}
 .overlay.on{display:block;opacity:1}
 .sheet{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--bg2);z-index:91;border-left:1px solid var(--line);box-shadow:-30px 0 60px -20px rgba(0,0,0,.8);overflow-y:auto;transform:translateX(100%);transition:transform .36s cubic-bezier(.4,0,.2,1)}
 .sheet.on{transform:none}
-.sheet .shead{position:sticky;top:0;z-index:5;padding:18px 20px;display:flex;align-items:center;gap:14px;background:linear-gradient(180deg,var(--panel2),rgba(28,37,66,.92));backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.sheet .shead{position:sticky;top:0;z-index:5;padding:calc(18px + env(safe-area-inset-top,0px)) 20px 18px;display:flex;align-items:center;gap:14px;background:linear-gradient(180deg,var(--panel2),rgba(28,37,66,.92));backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .sheet .shead .fl{width:54px;height:39px;border-radius:6px;overflow:hidden;flex:0 0 auto;box-shadow:0 3px 10px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.18)}
 .sheet .shead .fl svg{width:100%;height:100%;display:block}
 .sheet .shead .tt{flex:1;min-width:0}
 .sheet .shead .tt h3{font-family:'Anton';font-size:26px;text-transform:uppercase;line-height:1;letter-spacing:.02em}
 .sheet .shead .tt .sub{color:var(--muted);font-size:13px;margin-top:3px}
-.sheet .close{background:var(--panel);border:1px solid var(--line);color:var(--ink);width:38px;height:38px;border-radius:11px;font-size:20px;cursor:pointer;flex:0 0 auto;transition:var(--fast)}
+.sheet .close{background:var(--panel);border:1px solid var(--line);color:var(--ink);width:46px;height:46px;border-radius:13px;font-size:24px;line-height:1;cursor:pointer;flex:0 0 auto;transition:var(--fast);display:grid;place-items:center}
 .sheet .close:hover{background:var(--accent);transform:rotate(90deg)}
+.sheet .close:active{background:var(--accent);transform:scale(.92)}
 .sheet .sbody{padding:18px 20px 40px;display:flex;flex-direction:column;gap:16px}
 .factgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .fact{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 13px}
@@ -798,17 +910,30 @@ footer b{color:var(--ink)}
 .calday.collapsed .caldh{opacity:.72}
 .cald{font-family:'Anton';font-size:18px;text-transform:capitalize;color:var(--ink)}
 .caln{font-family:'Archivo Narrow';font-weight:700;font-size:11.5px;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;flex:none;margin-left:auto}
-.calm{display:grid;grid-template-columns:62px 1fr;gap:10px;align-items:center;padding:10px 4px;border-bottom:1px solid var(--line)}
-.calt{font-family:'Anton';font-size:16px;color:var(--ink);line-height:1.05;text-align:center}
-.calt small{display:block;font-family:'Archivo Narrow';font-size:9px;color:var(--muted);font-weight:700}
-.calpair{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-weight:700;font-size:13.5px}
-.calpair .cteam{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
-.calpair .cteam .fl{width:24px;border-radius:3px}
-.calpair .clbl{color:var(--muted);font-weight:600;font-size:12.5px}
-.calpair .calx{color:var(--muted);font-weight:800}
-.calmeta{grid-column:2;display:flex;gap:8px;align-items:center;margin-top:3px}
-.calph{font-family:'Archivo Narrow';font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#11172b;background:var(--gold);border-radius:6px;padding:2px 7px}
-.calcity{font-size:11.5px;color:var(--muted)}
+.calm{display:grid;grid-template-columns:54px 1fr;column-gap:8px;align-items:center;padding:11px 6px;border-bottom:1px solid var(--line);box-shadow:inset 3px 0 0 var(--acc)}
+.calmstatus{grid-row:1/3;display:flex;align-items:center;justify-content:center}
+.calst{font-family:'Anton';font-size:15px;color:var(--ink);line-height:1.05;text-align:center}
+.calst small{display:block;font-family:'Archivo Narrow';font-size:9px;color:var(--muted);font-weight:700}
+.calst.ft{font-size:13px;color:var(--muted);font-family:'Archivo Narrow';font-weight:800}
+.calst.live{font-size:11px;color:var(--accent);font-family:'Archivo Narrow';font-weight:800;animation:lvp 1.4s infinite}
+.calmteams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
+.cteam{display:inline-flex;align-items:center;gap:7px;cursor:pointer;min-width:0}
+.cteam.tl{justify-content:flex-end;text-align:right}
+.cteam.tr{justify-content:flex-start;text-align:left}
+.cteam .cnm{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cteam .fl{width:26px;height:18px;border-radius:3px;overflow:hidden;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.cteam .fl svg{width:100%;height:100%;display:block}
+.cteam.win .cnm{color:var(--ink);font-weight:800}
+.cteam.lose{opacity:.5}
+.clbl{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.clbl.tl{text-align:right}.clbl.tr{text-align:left}
+.calscore{font-family:'Anton';font-size:21px;letter-spacing:.5px;white-space:nowrap}
+.calscore i{font-style:normal;color:var(--muted);margin:0 2px;font-size:15px}
+.calscore.live{color:var(--accent)}
+.calvs{font-family:'Archivo';font-weight:800;color:var(--muted);font-size:13px}
+.calmeta{grid-column:2;display:flex;gap:8px;align-items:center;margin-top:6px}
+.calph{font-family:'Archivo Narrow';font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#11172b;background:var(--gold);border-radius:6px;padding:2px 7px;flex:0 0 auto}
+.calcity{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* prediction */
 .predbtn{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:11px;color:var(--ink);font-weight:800;font-size:13.5px;cursor:pointer;font-family:inherit;margin-bottom:12px}
 .predbtn.on{background:linear-gradient(150deg,#a78bfa,#7c5cff);color:#fff;border-color:transparent}
@@ -902,15 +1027,19 @@ footer b{color:var(--ink)}
 
   <section class="view on" id="view-teams">
     <div id="homeHero"></div>
-    <div class="viewhead"><h2>Les 48 nations</h2><p>Carte du monde des qualifiés · touchez un pays ou une équipe</p></div>
+    <div id="homeStandings"></div>
+    <input id="teamSearch" class="searchbox" type="search" placeholder="🔍 Rechercher une équipe…" autocomplete="off">
+    <div id="favStrip" class="favstrip"></div>
+    <div class="groupgrid" id="teamGrid" style="margin-top:14px"></div>
+  </section>
+
+  <section class="view" id="view-worldmap">
+    <div class="viewhead"><h2>Carte du monde</h2><p>Les 48 qualifiés · touchez un pays ou une équipe</p></div>
     <div class="fbar" id="worldBar"></div>
     <div class="fpanel" id="worldPanel"></div>
     <div id="worldMap"></div>
     <div id="worldList"></div>
     <div id="worldLegend" style="margin-bottom:10px"></div>
-    <input id="teamSearch" class="searchbox" type="search" placeholder="🔍 Rechercher une équipe…" autocomplete="off">
-    <div id="favStrip" class="favstrip"></div>
-    <div class="groupgrid" id="teamGrid" style="margin-top:14px"></div>
   </section>
 
   <section class="view" id="view-groups">
@@ -947,7 +1076,7 @@ footer b{color:var(--ink)}
     <div class="viewhead"><h2>Phase finale</h2><p>Des seizièmes à la finale · suivi en direct</p></div>
     <div class="komode" id="koMode">
       <button data-m="follow" class="on">📡 Suivi</button>
-      <button data-m="bracket">🗺️ Tableau</button>
+      <button data-m="bracket">🛤️ Parcours équipe</button>
       <button data-m="round">🔮 Mon pronostic</button>
       <button data-m="path">🧭 Parcours</button>
     </div>
@@ -982,6 +1111,7 @@ footer b{color:var(--ink)}
 </div></nav>
 
 <div id="moreMenu" class="moremenu" style="display:none">
+  <button data-view="worldmap"><span class="ic">🌍</span><span>Carte du monde</span></button>
   <button data-view="standings"><span class="ic">📊</span><span>Classement & simulateur</span></button>
   <button data-view="compare"><span class="ic">⚖️</span><span>Duel d'équipes</span></button>
   <button data-view="stadiums"><span class="ic">🏟️</span><span>Les 16 stades</span></button>
@@ -1052,7 +1182,8 @@ function refreshScores(){applyResultsToScores();if(!simPlaceEdited)simPlace=null
   if(id==='view-calendar')renderCalendar();
   else if(id==='view-ko')renderKO();
   else if(id==='view-groups'&&_selGroup)selectGroup(_selGroup);
-  else if(id==='view-standings')renderStandings();}
+  else if(id==='view-standings')renderStandings();
+  else if(id==='view-teams')renderHomeStandings();}
 
 /* country a3 -> list of teams (GBR has 2) */
 const A3TEAMS={};
@@ -1700,7 +1831,8 @@ function openTeam(team){const g=groupOf(team),col=GCOLORS[g];_lastSheet=()=>open
     <div class="fact"><div class="k">Population</div><div class="v" style="font-size:15px">${POP[team]>=1?POP[team].toLocaleString('fr-FR')+' M':(POP[team]*1000).toLocaleString('fr-FR')+' k'} hab.</div></div></div>`;
   const totalKm=routeKm(ms.map(m=>m.city));
   _scenTeam=team;_scenPos='1er';
-  const favBtn=`<div class="favbar"><button class="favbtn${FAV.has(team)?' on':''}" data-fav="${team}">${FAV.has(team)?'★ Épinglée':'☆ Épingler'}</button><button class="favbtn" data-ics="${team}">📆 Ajouter au calendrier</button></div>`;
+  const favBtn=`<div class="favbar"><button class="favbtn${FAV.has(team)?' on':''}" data-fav="${team}">${FAV.has(team)?'★ Épinglée':'☆ Épingler'}</button><button class="favbtn" data-ics="${team}">📆 Ajouter au calendrier</button></div>
+    <button class="favbtn" data-path="${team}" style="width:100%;margin-bottom:14px;background:rgba(58,134,255,.12);border-color:rgba(58,134,255,.4)">🛤️ Voir son parcours vers la finale</button>`;
   const body=`${favBtn}<div>${facts}</div>${teamStatsBlock(team)}
     <div><div class="blocktitle">Adversaires possibles — selon sa place dans le groupe ${g}</div>
       <div class="posseg">
@@ -1762,13 +1894,42 @@ function renderStandPicker(){const pk=$('standPicker');
   renderStandings();}
 function computeTable(g){
   const tbl={};groups[g].forEach(t=>tbl[t]={t,j:0,v:0,n:0,d:0,bp:0,bc:0});
-  matches.filter(m=>m.phase==='Groupes'&&m.group===g).forEach(m=>{const s=scores[m.id];if(!s||s[0]===''||s[1]===''||s[0]==null||s[1]==null)return;
+  const gms=matches.filter(m=>m.phase==='Groupes'&&m.group===g);
+  gms.forEach(m=>{const s=scores[m.id];if(!s||s[0]===''||s[1]===''||s[0]==null||s[1]==null)return;
     const a=+s[0],b=+s[1];if(isNaN(a)||isNaN(b))return;
     const A=tbl[m.teamA],B=tbl[m.teamB];A.j++;B.j++;A.bp+=a;A.bc+=b;B.bp+=b;B.bc+=a;
     if(a>b){A.v++;B.d++;}else if(a<b){B.v++;A.d++;}else{A.n++;B.n++;}});
-  const arr=Object.values(tbl).map(x=>({...x,pts:x.v*3+x.n,gd:x.bp-x.bc}));
-  arr.sort((x,y)=>y.pts-x.pts||y.gd-x.gd||y.bp-x.bp||FIFA[x.t][0]-FIFA[y.t][0]);
-  return arr;}
+  let arr=Object.values(tbl).map(x=>({...x,pts:x.v*3+x.n,gd:x.bp-x.bc}));
+  // mini-classement entre un sous-ensemble d'équipes (confrontations directes)
+  const h2h=(teams)=>{const set=new Set(teams.map(x=>x.t));const mt={};teams.forEach(x=>mt[x.t]={pts:0,gd:0,bp:0});
+    gms.forEach(m=>{const s=scores[m.id];if(!s||s[0]===''||s[1]===''||s[0]==null||s[1]==null)return;
+      if(!set.has(m.teamA)||!set.has(m.teamB))return;const a=+s[0],b=+s[1];if(isNaN(a)||isNaN(b))return;
+      mt[m.teamA].bp+=a;mt[m.teamB].bp+=b;mt[m.teamA].gd+=(a-b);mt[m.teamB].gd+=(b-a);
+      if(a>b)mt[m.teamA].pts+=3;else if(a<b)mt[m.teamB].pts+=3;else{mt[m.teamA].pts++;mt[m.teamB].pts++;}});
+    return mt;};
+  // tri récursif conforme FIFA
+  const sortGroup=(list)=>{
+    list.sort((x,y)=>y.pts-x.pts);
+    const out=[];let i=0;
+    while(i<list.length){
+      let j=i;while(j+1<list.length&&list[j+1].pts===list[i].pts)j++;
+      const tie=list.slice(i,j+1);
+      if(tie.length===1){out.push(tie[0]);}
+      else{
+        // Étape 1 : confrontations directes (pts, diff, buts marqués entre eux)
+        const mt=h2h(tie);
+        tie.sort((x,y)=>mt[y.t].pts-mt[x.t].pts || mt[y.t].gd-mt[x.t].gd || mt[y.t].bp-mt[x.t].bp
+          // Étape 2 : diff générale, buts marqués généraux
+          || y.gd-x.gd || y.bp-x.bp
+          // Étape 3 : classement FIFA
+          || FIFA[x.t][0]-FIFA[y.t][0]);
+        // si un sous-groupe reste à égalité parfaite en H2H, on les ré-départage entre eux (déjà fait par les critères suivants)
+        out.push(...tie);
+      }
+      i=j+1;
+    }
+    return out;};
+  return sortGroup(arr);}
 function renderStandings(){const g=curStandG,col=GCOLORS[g];
   document.querySelectorAll('#standPicker .gpill').forEach(p=>p.classList.toggle('on',p.dataset.g===g));
   const ms=matches.filter(m=>m.phase==='Groupes'&&m.group===g).sort((a,b)=>(a.matchNumber||a.id)-(b.matchNumber||b.id));
@@ -1971,7 +2132,45 @@ function brkLabelShort(l){
   if((''+l).startsWith('3e Groupe '))return {t:'3ᵉ '+l.replace('3e Groupe ','').replace(/\//g,''),c:'#ffcf3f'};
   return {t:'',c:'#9aa6c8'};
 }
-let BRK_REGIONS={},BRK_POS={};let brkFilterTeam='',_brkGoto='all';
+let BRK_REGIONS={},BRK_POS={};let brkFilterTeam='',_brkGoto='all';let brkTeam='France';
+function buildTeamPath(team,RES){
+  // identifie le seizième où l'équipe apparaît (selon RES = classement en direct)
+  const PH=[['Seizièmes','Seizième de finale','16ᵉ'],['Huitièmes','Huitième de finale','8ᵉ'],['Quarts','Quart de finale','¼'],['Demi-finales','Demi-finale','½'],['Finale','Finale','🏆']];
+  let cur=KO.find(m=>m.phase==='Seizièmes'&&(RES[m.matchNumber]||[]).includes(team));
+  if(!cur){
+    const g=groupOf(team);const tb=computeTable(g);const pos=tb.findIndex(r=>r.t===team)+1;
+    let msg;
+    if(pos===3)msg=`<b>${team}</b> est actuellement <b style="color:var(--gold)">3ᵉ du groupe ${g}</b>.<br>Sa qualification dépend du classement des <b>8 meilleurs 3ᵉˢ</b> — son parcours s'affichera dès qu'elle sera repêchée.`;
+    else if(pos===4)msg=`<b>${team}</b> est actuellement <b style="color:var(--accent)">4ᵉ du groupe ${g}</b> et serait <b>éliminée</b> en l'état.`;
+    else msg=`Le parcours de <b>${team}</b> s'affichera dès que la phase de groupes aura déterminé les qualifiés.`;
+    return `<div class="tpempty">${msg}<br><br>Touchez <b>📡 Suivi</b> ou <b>🔠 Groupes</b> pour suivre le classement en direct.</div>`;}
+  let html='',mn=cur.matchNumber,who=team,step=0;
+  const phName=p=>PH.find(x=>x[0]===p)||[p,p,''];
+  while(cur){
+    const ph=phName(cur.phase);const rr=RES[cur.matchNumber]||[];
+    const opp=rr[0]===who?rr[1]:rr[1]===who?rr[0]:null;
+    const r=scoreOf(cur);const done=r&&r.a!=null;
+    const wside=done?(r.a>r.b?'A':r.b>r.a?'B':(r.pa>r.pb?'A':'B')):null;
+    const meA=rr[0]===who;const iWon=done&&((meA&&wside==='A')||(!meA&&wside==='B'));
+    const f=fmtParts(cur);
+    const oppHtml=opp?`${isTeam(opp)?flagBox(opp,'tpfl'):''}<b>${opp}</b>`:`<span class="tppend">${koLabelShort(meA?cur.teamB:cur.teamA)}</span>`;
+    const scoreHtml=done?`<span class="tpsc${iWon?' win':' lose'}">${meA?r.a:r.b}–${meA?r.b:r.a}${r.status==='PEN'?` <i>tab</i>`:r.status==='AET'?' <i>ap</i>':''}</span>`:`<span class="tpwhen">${f.date} · ${f.time} ${f.zone}</span>`;
+    html+=`<div class="tpstep${done?(iWon?' won':' out'):''}" data-match="${cur.id}">
+      <div class="tpdot">${ph[2]}</div>
+      <div class="tpcard">
+        <div class="tpphase">${ph[1]} · M${cur.matchNumber}</div>
+        <div class="tprow"><span class="tpvs">vs</span> ${oppHtml} ${scoreHtml}</div>
+        <div class="tpmeta">🏟️ ${stadiumOf(cur)} · ${cur.city}</div>
+      </div></div>`;
+    if(done&&!iWon){html+=`<div class="tpend out">❌ ${team} est éliminé à ce stade (selon les résultats actuels).</div>`;break;}
+    if(cur.phase==='Finale'){if(done&&iWon)html+=`<div class="tpend champ">🏆 ${team} est CHAMPION DU MONDE !</div>`;break;}
+    // match suivant : cherche le match qui prend "Vainqueur M{mn}"
+    const nxt=KO.find(m=>m.teamA===`Vainqueur M${cur.matchNumber}`||m.teamB===`Vainqueur M${cur.matchNumber}`);
+    if(!nxt)break;
+    cur=nxt;mn=cur.matchNumber;step++;
+    if(step>6)break;
+  }
+  return html;}
 /* ---- interactive bracket simulator: group placements + winner picks ---- */
 let koPick={},simPlace=null,simPlaceEdited=false;
 function initSimPlace(){simPlace={};Object.keys(groups).forEach(g=>simPlace[g]=computeTable(g).map(r=>r.t));}
@@ -2126,34 +2325,79 @@ function followCard(m,RES){const f=fmtParts(m);const rr=RES[m.matchNumber]||[nul
     <div class="fohead"><span class="fomn">M${m.matchNumber}</span><span class="fostad">🏟️ ${stadiumOf(m)} · ${m.city}</span></div>
     <div class="fobody">${sA}<div class="fomid">${mid}</div>${sB}</div></div>`;}
 
+let _foRound='Seizièmes';
+function isConfirmed(label){
+  // une affiche est "confirmée" si l'équipe est mathématiquement certaine.
+  // Approche pragmatique : confirmée si le groupe d'origine a tous ses matchs joués (1er/2e), 
+  // ou si l'équipe provient d'un match KO déjà terminé (Vainqueur M..).
+  if(isTeam(label))return null; // déjà une équipe = on regarde via le match
+  if(label.startsWith('1er Groupe ')||label.startsWith('2e Groupe ')){
+    const g=label.slice(-1);const tb=computeTable(g);const done=tb.every(r=>r.j===3);return done;}
+  if(label.startsWith('3e Groupe ')) return false; // 3es jamais "confirmés" tant que tout n'est pas joué
+  if(label.startsWith('Vainqueur M')){const k=+label.replace(/\D/g,'');const mm=KOBYNUM[k];const r=scoreOf(mm);return !!(r&&r.a!=null);}
+  return false;}
+function foMatchCard(m,RES){
+  const rr=RES[m.matchNumber]||[null,null];const r=scoreOf(m);const f=fmtParts(m);
+  const done=r&&r.a!=null&&['FT','AET','PEN'].includes(r.status);
+  const live=r&&r.a!=null&&r.status&&!['FT','AET','PEN'].includes(r.status);
+  const wside=done?(r.a>r.b?'A':r.b>r.a?'B':(r.pa>r.pb?'A':'B')):null;
+  // statut "Selon le classement" / "Confirmé"
+  const cA=isConfirmed(m.teamA),cB=isConfirmed(m.teamB);
+  let badge;
+  if(done||live)badge='';
+  else if(cA===true&&cB===true)badge='<span class="focf">✓ Affiche confirmée</span>';
+  else if(cA===null&&cB===null)badge='<span class="focf">✓ Affiche confirmée</span>';
+  else badge='<span class="foas">Selon le classement actuel</span>';
+  const teamLine=(team,label,which)=>{
+    const won=done&&wside===which;const lost=done&&wside&&!won;
+    const nm=team||koLabelShort(label);
+    const sc=done?(which==='A'?r.a:r.b):'';
+    return `<div class="fotr${won?' won':''}${lost?' lost':''}"${team&&isTeam(team)?` data-team="${team}"`:''}>
+      ${team&&isTeam(team)?flagBox(team,'foflag'):'<span class="foflag empty"></span>'}
+      <span class="fonm">${nm}</span>
+      ${(done)?`<span class="fonum">${sc}${r.status==='PEN'&&won?' <i>(tab)</i>':''}</span>`:''}</div>`;};
+  const right=done?'':live?`<div class="fortime"><span class="folivedot">🔴</span><br>live</div>`
+    :`<div class="fortime">${f.date}<br><b>${f.time}</b><br><span class="fotz">${f.zone}</span></div>`;
+  return `<div class="focard2" data-match="${m.id}" data-mn="${m.matchNumber}">
+    ${badge?`<div class="fobadge">${badge}<span class="fostadm">${stadiumOf(m)}</span></div>`:`<div class="fobadge"><span class="fostadm solo">🏟️ ${stadiumOf(m)} · ${m.city}</span></div>`}
+    <div class="focard2body"><div class="foteams2">${teamLine(rr[0],m.teamA,'A')}${teamLine(rr[1],m.teamB,'B')}</div><div class="fosep2"></div>${right}</div></div>`;}
+
 function renderFollow(){const el=$('koFollow');if(!el)return;
-  const RES=resolveReal();
-  const champ=realChampion();
-  // état du tournoi : premier tour non terminé
+  const RES=resolveReal();const champ=realChampion();
   const order=KO_ROUNDS.map(r=>r[0]);
+  // tour courant (premier non terminé) pour le pré-sélectionner une fois
   let curRound=null;
   for(const ph of order){const ms=KO.filter(m=>m.phase===ph);if(ms.some(m=>!scoreOf(m)||scoreOf(m).a==null)){curRound=ph;break;}}
-  const live=KO.filter(m=>{const r=scoreOf(m);return r&&r.status&&!['FT','AET','PEN'].includes(r.status);});
-  const next=KO.slice().sort((a,b)=>new Date(a.kickoffUTC)-new Date(b.kickoffUTC)).find(m=>new Date(m.kickoffUTC)>Date.now()&&(!scoreOf(m)||scoreOf(m).a==null));
-  // bannière résumé
-  let summary;
-  if(champ)summary=`<div class="fosum champ"><div class="fosumk">🏆 Champion du monde</div><div class="fosumv">${flagBox(champ)} <b>${champ}</b></div></div>`;
-  else if(live.length){const m=live[0],r=scoreOf(m);summary=`<div class="fosum live" data-match="${m.id}"><div class="fosumk">🔴 Match en direct</div><div class="fosumv">${isTeam(m.teamA)?flagBox(m.teamA):''} ${koLabelShort(m.teamA)} <b>${r.a}–${r.b}</b> ${koLabelShort(m.teamB)} ${isTeam(m.teamB)?flagBox(m.teamB):''}</div></div>`;}
-  else if(next){const f=fmtParts(next);summary=`<div class="fosum" data-match="${next.id}"><div class="fosumk">${curRound?phaseLabel(curRound)+' · ':''}Prochain match</div><div class="fosumv">${isTeam(next.teamA)?flagBox(next.teamA):''} ${koLabelShort(next.teamA)} <span class="fovs">×</span> ${koLabelShort(next.teamB)} ${isTeam(next.teamB)?flagBox(next.teamB):''}</div><div class="fosumcd" data-countdown="${next.kickoffUTC}" data-kick="Coup d'envoi imminent"></div></div>`;}
-  else summary=`<div class="fosum"><div class="fosumk">Phase finale</div><div class="fosumv">Elle débute le 28 juin 2026</div></div>`;
-  // tours pliables
-  let html='';
-  KO_ROUNDS.forEach(([ph,short])=>{const ms=KO.filter(m=>m.phase===ph).sort((a,b)=>a.matchNumber-b.matchNumber);if(!ms.length)return;
-    const total=ms.length,played=ms.filter(m=>{const r=scoreOf(m);return r&&r.a!=null;}).length;
-    const isCur=ph===curRound;const collapsed=played===0&&!isCur&&ph!=='Seizièmes';
-    html+=`<div class="foround${collapsed?' col':''}${isCur?' cur':''}" data-foround="${ph}">
-      <div class="forhead" data-fotoggle="${ph}"><span class="forchev">▾</span><span class="forttl">${phaseLabel(ph)}</span>${isCur?'<span class="fortag">en cours</span>':''}<span class="forn">${played}/${total}</span></div>
-      <div class="forbody">${ms.map(m=>followCard(m,RES)).join('')}</div></div>`;});
-  el.innerHTML=summary+`<div class="folist">${html}</div>`;
-  el.querySelectorAll('[data-fotoggle]').forEach(h=>h.onclick=()=>{const r=h.closest('.foround');r.classList.toggle('col');});
-  tickCountdowns();
-  // auto-scroll vers le tour courant à la 1re ouverture
-  if(!_followScrolled&&curRound){_followScrolled=true;const cur=el.querySelector('.foround.cur');if(cur)setTimeout(()=>cur.scrollIntoView({behavior:'smooth',block:'start'}),120);}}
+  if(!_followScrolled){_foRound=curRound||'Seizièmes';_followScrolled=true;}
+  if(!order.includes(_foRound))_foRound='Seizièmes';
+  // bannière champion si connu
+  const champBanner=champ?`<div class="fosum champ"><div class="fosumk">🏆 Champion du monde</div><div class="fosumv">${flagBox(champ)} <b>${champ}</b></div></div>`:'';
+  // onglets ronds par tour
+  const LBL={'Seizièmes':'16ᵉˢ','Huitièmes':'8ᵉˢ','Quarts':'Quarts','Demi-finales':'Demies','Match pour la 3e place':'3ᵉ place','Finale':'Finale'};
+  const tabs=`<div class="fotabs" id="foTabs">${KO_ROUNDS.map(([ph])=>`<button data-foround="${ph}" class="${ph===_foRound?'on':''}">${LBL[ph]}</button>`).join('')}</div>`;
+  // cartes du tour sélectionné + aperçu du tour suivant (connecteur)
+  const ms=KO.filter(m=>m.phase===_foRound).sort((a,b)=>a.matchNumber-b.matchNumber);
+  const nextPh=order[order.indexOf(_foRound)+1];
+  const phName=phaseLabel(_foRound);
+  let body=`<div class="fohdr">${phName}</div>`;
+  if(_foRound==='Finale'||_foRound==='Match pour la 3e place'){
+    body+=`<div class="fofinal">${ms.map(m=>foMatchCard(m,RES)).join('')}</div>`;
+  }else{
+    // paires reliées au match du tour suivant
+    body+='<div class="fobracket">';
+    for(let i=0;i<ms.length;i+=2){
+      const pair=ms.slice(i,i+2);
+      // trouve le match suivant qui prend les vainqueurs de ces 2 matchs
+      let feed=null;
+      if(nextPh){feed=KO.find(x=>x.phase===nextPh&&pair.some(p=>x.teamA===`Vainqueur M${p.matchNumber}`||x.teamB===`Vainqueur M${p.matchNumber}`));}
+      body+=`<div class="fopair"><div class="fopcards">${pair.map(m=>foMatchCard(m,RES)).join('')}</div>
+        ${feed?`<div class="foconn"><div class="foconnline"></div><div class="foconncard" data-match="${feed.id}"><div class="foconnstad">🏟️ ${stadiumOf(feed)}</div><div class="foconnnext">→ ${LBL[nextPh]||nextPh}</div></div></div>`:''}</div>`;
+    }
+    body+='</div>';
+  }
+  el.innerHTML=champBanner+tabs+body;
+  $('foTabs').querySelectorAll('[data-foround]').forEach(b=>b.onclick=()=>{_foRound=b.dataset.foround;renderFollow();});
+  tickCountdowns();}
 let _followScrolled=false;
 function phaseLabel(ph){return {'Seizièmes':'Seizièmes de finale','Huitièmes':'Huitièmes de finale','Quarts':'Quarts de finale','Demi-finales':'Demi-finales','Match pour la 3e place':'Match pour la 3ᵉ place','Finale':'Finale'}[ph]||ph;}
 
@@ -2164,81 +2408,21 @@ function renderKO(){
   $('koPath').style.display=koMode==='path'?'':'none';
   if(koMode!=='bracket'){document.body.classList.remove('brkfull');$('koBracket').classList.remove('full');}
   if(koMode==='follow'){renderFollow();return;}
-  if(koMode==='bracket'){
-    document.body.classList.add('brkfull');$('koBracket').classList.add('full');
-    const head=`<div class="brkheadbar"><button id="brkBack">← Retour</button><span class="bht">🏆 Tableau de la phase finale</span><button id="brkRotate" title="Mode paysage">↻</button></div>`;
-    if(!simPlaceEdited)simPlace=null;
-    if(!simPlace)initSimPlace();
-    const champ=brkChampion();
-    const _ups=countUpsets(resolveAll());
-    const champBanner=champ?`<div class="champ">🏆 Champion du monde simulé : <b>${flagBox(champ)} ${champ}</b>${_ups?` <span class="upsbadge">😮 ${_ups} surprise${_ups>1?'s':''}</span>`:''}<button class="favtgl" id="brkShare" style="margin-left:10px">↗ Partager</button></div>`:'';
-    const anyResult=Object.keys(RESULTS||{}).length>0;
-    const basis=`classement des groupes en direct${anyResult?'':' (0 pt partout pour l’instant — ordre par départage / classement FIFA)'}`;
-    const infoNote=`<div class="brkinfo">ℹ️ Tableau classé selon le <b>${basis}</b>, mis à jour automatiquement avec les résultats${simPlaceEdited?' — <b>modifié manuellement</b> (↺ Réinitialiser pour revenir au direct)':''}. Ajuste avec « ⚙︎ Régler les groupes ».</div>`;
-    const ctrl=`<div class="brkctrl"><button class="favtgl" id="brkAuto">🔮 Pronostic auto</button><button class="favtgl" id="brkReset">↺ Réinitialiser</button><button class="favtgl" id="brkLink">🔗 Partager le lien</button><button class="favtgl${brkGrpOpen?' on':''}" id="brkGrpToggle">⚙︎ Régler les groupes</button></div>`;
-    let grped=`<div class="grped" id="grped"${brkGrpOpen?'':' style="display:none"'}>
-      <div class="grpehead"><span>1ᵉʳ <i>qualifié</i></span><span>2ᵉ <i>qualifié</i></span><span>3ᵉ <i>repêchable</i></span><span>4ᵉ <i>éliminé</i></span></div>`;
-    Object.keys(groups).forEach(g=>{const col=GCOLORS[g];
-      grped+=`<div class="gpe"><span class="gpeh" style="background:${col};color:${inkFor(col)}">Groupe ${g}</span><div class="gpcols">`+
-        simPlace[g].map((t,i)=>`<div class="gpslot q${i+1}"><span class="gprk">${i+1}</span>${flagBox(t,'gpfl')}<span class="gpnm">${t}</span><span class="gparr">${i>0?`<button class="gpup" data-gpro="${g}|${i}|up" title="Monter">▲</button>`:''}${i<3?`<button class="gpdn" data-gpro="${g}|${i}|dn" title="Descendre">▼</button>`:''}</span></div>`).join('')+
-        `</div></div>`;});
-    grped+=`<div class="prednote" style="margin-top:8px">Ordre initial = <b>classement en direct</b> de chaque groupe. Utilisez ▲▼ pour réordonner : les <b>1ᵉʳ et 2ᵉ</b> sont qualifiés, les <b>8 meilleurs 3ᵉˢ</b> (au classement FIFA) sont repêchés.</div></div>`;
-    const teamOpts=['<option value="">🔎 Filtrer une équipe…</option>'].concat(
-      Object.values(groups).flat().sort((a,b)=>a.localeCompare(b,'fr')).map(t=>`<option value="${t}"${t===brkFilterTeam?' selected':''}>${t}</option>`)).join('');
-    const filt=`<div class="brkfilt"><select id="brkTeamSel">${teamOpts}</select>${brkFilterTeam?'<button class="favtgl" id="brkClrTeam">✕ Filtre</button>':''}</div>`;
-    const nav=`<div class="brknav" id="brkNav">${[['all','Tout'],['Seizièmes','16ᵉˢ'],['Huitièmes','8ᵉˢ'],['Quarts','Quarts'],['Demi-finales','Demies'],['Finale','Finale']].map(([r,l])=>`<button data-round="${r}" class="${r===brkRegion?'on':''}">${l}</button>`).join('')}</div>`;
-    const note=`<div class="prednote" style="margin:2px 0 8px"><b>Touchez une équipe</b> pour la qualifier. Zoom libre (pincez/molette), glissez pour explorer le poster.</div>`;
-    const old=$('koBracket').querySelector('svg.pz');const savedView=old&&old._view?old._view():null;
-    $('koBracket').innerHTML=head+champBanner+infoNote+ctrl+grped+filt+nav+note+renderBracket();
-    $('brkBack').onclick=()=>{if(history.state&&history.state.brk){try{history.back();return;}catch(_){}}exitBracket();};
-    $('brkAuto').onclick=()=>{autoFillBracket();_brkGoto=null;renderKO();};
-    if($('brkShare'))$('brkShare').onclick=async()=>{const RES2=resolveAll();
-      const fin=KO.find(m=>m.phase==='Finale');const pair=RES2[fin.matchNumber]||[];
-      const sfs=KO.filter(m=>m.phase==='Demi-finales').flatMap(m=>RES2[m.matchNumber]||[]).filter(Boolean);
-      const fe=t=>flagEmoji(t)||'';
-      let txt=`🔮 Mon pronostic Coupe du Monde 2026\n🏆 Champion : ${fe(champ)} ${champ}`;
-      if(pair.length===2&&pair[0]&&pair[1])txt+=`\n🥇 Finale : ${fe(pair[0])} ${pair[0]} – ${fe(pair[1])} ${pair[1]}`;
-      if(sfs.length)txt+=`\n4 derniers : ${sfs.map(t=>fe(t)+' '+t).join(', ')}`;
-      if(_ups)txt+=`\n😮 ${_ups} surprise${_ups>1?'s':''} dans mon bracket`;
-      txt+=`\nOuvre mon bracket et fais le tien 👇`;
-      const shURL=brkShareURL();
-      const b=$('brkShare');
-      try{if(navigator.share){await navigator.share({title:'Mon pronostic CM2026',text:txt,url:shURL});}
-        else{await navigator.clipboard.writeText(txt+'\n'+shURL);b.textContent='✓ Copié !';setTimeout(()=>b.textContent='↗ Partager',1600);}}catch(_){}};
-    $('brkLink').onclick=async()=>{const url=brkShareURL();const b=$('brkLink');
-      try{if(navigator.share){await navigator.share({title:'Mon pronostic CM2026',text:'Ouvre mon bracket et fais le tien 👇',url});}
-        else{await navigator.clipboard.writeText(url);b.textContent='✓ Lien copié !';setTimeout(()=>b.textContent='🔗 Partager le lien',1600);}}catch(_){}};
-    $('brkReset').onclick=()=>{koPick={};simPlaceEdited=false;initSimPlace();_brkGoto=null;renderKO();};
-    $('brkGrpToggle').onclick=()=>{brkGrpOpen=!brkGrpOpen;_brkGoto=null;renderKO();};
-    $('brkTeamSel').onchange=e=>{brkFilterTeam=e.target.value;_brkGoto='team';renderKO();};
-    if($('brkClrTeam'))$('brkClrTeam').onclick=()=>{brkFilterTeam='';_brkGoto='all';brkRegion='all';renderKO();};
-    initZoomable($('koBracket'));
-    const svg=$('koBracket').querySelector('svg.pz');
-    let teamReg=null;
-    if(brkFilterTeam){const RES=resolveAll();const fm=KO.find(x=>x.phase==='Seizièmes'&&(RES[x.matchNumber]||[]).indexOf(brkFilterTeam)>=0);
-      if(fm&&BRK_POS[fm.matchNumber]){const p=BRK_POS[fm.matchNumber];teamReg=[p.cx-150,p.cy-150,p.cx+150,p.cy+150];}}
-    const go=r=>{let reg=r==='team'?teamReg:BRK_REGIONS[r];if(svg&&svg._fitRegion&&reg)svg._fitRegion(reg[0],reg[1],reg[2],reg[3],(r==='all'||r==='team')?'all':'width');};
-    $('brkNav').querySelectorAll('[data-round]').forEach(b=>b.onclick=()=>{brkRegion=b.dataset.round;$('brkNav').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));_brkGoto=null;go(b.dataset.round);});
-    requestAnimationFrame(()=>{if(_brkGoto){go(_brkGoto);}else if(savedView&&svg._setView){svg._setView(savedView);}else{go('all');}_brkGoto=null;});
-    /* mini-carte */
-    if(svg&&BRK_REGIONS.all){const[,,W2,H2]=BRK_REGIONS.all;
-      const rects=Object.values(BRK_POS).map(p=>`<rect x="${(p.cx-75).toFixed(0)}" y="${(p.cy-27).toFixed(0)}" width="150" height="54" rx="10"/>`).join('');
-      const mini=document.createElement('div');mini.id='brkMini';
-      mini.innerHTML=`<svg viewBox="0 0 ${W2} ${H2}" preserveAspectRatio="xMidYMid meet"><rect class="mmbg" x="0" y="0" width="${W2}" height="${H2}" rx="40"/><g class="mmb">${rects}</g><rect id="mmView" class="mmview" x="0" y="0" width="${W2}" height="${H2}" rx="30"/></svg>`;
-      $('koBracket').appendChild(mini);
-      const mv=mini.querySelector('#mmView');
-      svg._onView=()=>{const v=svg._visible();mv.setAttribute('x',Math.max(0,v.x0));mv.setAttribute('y',Math.max(0,v.y0));
-        mv.setAttribute('width',Math.max(40,Math.min(W2,v.x1-v.x0)));mv.setAttribute('height',Math.max(40,Math.min(H2,v.y1-v.y0)));
-        mini.classList.toggle('zoomed',v.s>1.06);};
-      const jump=ev=>{const r=mini.getBoundingClientRect();const sc2=Math.min(r.width/W2,r.height/H2);
-        const ox=(r.width-W2*sc2)/2,oy=(r.height-H2*sc2)/2;const t=ev.touches?ev.touches[0]:ev;
-        svg._centerOn((t.clientX-r.left-ox)/sc2,(t.clientY-r.top-oy)/sc2);};
-      mini.addEventListener('pointerdown',e=>{e.preventDefault();jump(e);});
-      svg._onView();}
-    /* paysage (Android) */
-    const rot=$('brkRotate');
-    if(rot){if(screen.orientation&&screen.orientation.lock){rot.onclick=async()=>{try{await document.documentElement.requestFullscreen();await screen.orientation.lock('landscape');}catch(_){showToast('📱 Tourne ton téléphone pour la vue large');}};}
-      else rot.onclick=()=>showToast('📱 Tourne ton téléphone pour la vue large');}
+  if(koMode==='bracket'){ /* Parcours d'une équipe vers la finale */
+    const RES=resolveReal();
+    const allTeams=Object.values(groups).flat().sort((a,b)=>a.localeCompare(b,'fr'));
+    if(!allTeams.includes(brkTeam))brkTeam=allTeams[0];
+    // construit la suite de matchs M73..M104 où l'équipe pourrait passer, selon le classement en direct
+    const path=buildTeamPath(brkTeam,RES);
+    const opts=allTeams.map(t=>`<option value="${t}"${t===brkTeam?' selected':''}>${t} (Gr. ${groupOf(t)})</option>`).join('');
+    const tb=computeTable(groupOf(brkTeam));const myPos=tb.findIndex(r=>r.t===brkTeam)+1;
+    const posTxt=myPos===1?'1ᵉʳ de groupe':myPos===2?'2ᵉ de groupe':myPos===3?'3ᵉ de groupe':myPos===4?'4ᵉ de groupe':'';
+    const qualif=myPos>=1&&myPos<=2?'qualifié (top 2)':myPos===3?'repêchable (meilleurs 3ᵉˢ)':'éliminé pour l\'instant';
+    const head=`<div class="tpath-pick"><span class="tpl">🛤️ Parcours de</span><select class="sel" id="tpSel">${opts}</select></div>
+      <div class="tpath-status"><span class="fl">${flagBox(brkTeam)}</span><div><b>${brkTeam}</b><span class="tps">Groupe ${groupOf(brkTeam)} · actuellement <b style="color:${myPos<=2?'var(--grass)':myPos===3?'var(--gold)':'var(--accent)'}">${posTxt||'—'}</b> · ${qualif}</span></div></div>`;
+    $('koBracket').innerHTML=head+`<div class="tpath">${path}</div>
+      <div class="prednote" style="margin-top:6px">Les adversaires sont déterminés par le <b>classement des groupes en direct</b> (départage FIFA officiel). Au fil des résultats, le parcours s'actualise automatiquement.</div>`;
+    $('tpSel').onchange=e=>{brkTeam=e.target.value;renderKO();};
     return;
   }
   if(koMode==='round'){$('koRound').style.display='';$('koPath').style.display='none';
@@ -2281,13 +2465,25 @@ function nextMatchBanner(list){
   if(!nx)return '';const f=fmtParts(nx);
   return `<div class="nextbar" data-match="${nx.id}"><span class="nbk">Prochain match</span><span class="nbm">${nx.teamA} × ${nx.teamB}</span><span class="nbc" data-countdown="${nx.kickoffUTC}" data-kick="Ça commence !"></span><span class="nbd">${f.date} · ${f.time} ${f.zone}</span></div>`;}
 function calRow(m){const f=fmtParts(m);
-  const side=l=>isTeam(l)?`<span class="cteam" data-team="${l}">${flagBox(l)}<span>${l}</span></span>`:`<span class="clbl">${l}</span>`;
   const PHC={'Seizièmes':'#3a86ff','Huitièmes':'#2ec4b6','Quarts':'#7209b7','Demi-finales':'#f72585','Match pour la 3e place':'#8a93b5','Finale':'#ffcf3f'};
   const PHS={'Seizièmes':'16ᵉˢ','Huitièmes':'8ᵉˢ','Quarts':'Quart','Demi-finales':'Demie','Match pour la 3e place':'3ᵉ place','Finale':'FINALE'};
   const tag=m.phase==='Groupes'?`<span class="calph">Gr. ${m.group}</span>`:`<span class="calph ko" style="background:${PHC[m.phase]};color:${inkFor(PHC[m.phase])}">${PHS[m.phase]||m.phase}</span>`;
-  const sc=scoreBadge(m);
   const acc=m.group?GCOLORS[m.group]:(PHC[m.phase]||'#8a93b5');
-  return `<div class="calm" data-match="${m.id}" style="box-shadow:inset 3px 0 0 ${acc}"><span class="calt">${sc?sc:`${f.time}<small>${f.zone}</small>`}</span><div><div class="calpair">${side(m.teamA)}<span class="calx">×</span>${side(m.teamB)}</div><div class="calmeta">${tag}<span class="calcity">🏟️ ${stadiumOf(m)} · ${m.city}</span></div></div></div>`;}
+  const r=scoreOf(m);const done=r&&r.a!=null;
+  const live=done&&r.status&&!['FT','AET','PEN'].includes(r.status);
+  // état (colonne gauche)
+  const status=live?`<span class="calst live">🔴 ${r.minute?r.minute+'’':'live'}</span>`
+    :done?`<span class="calst ft">${r.status==='PEN'?'TAB':r.status==='AET'?'AP':'FT'}</span>`
+    :`<span class="calst">${f.time}<small>${f.zone}</small></span>`;
+  // équipe (nom + drapeau), côté gauche = nom à droite, côté droit = nom à gauche
+  const wA=done&&(r.a>r.b||(r.a===r.b&&r.pa>r.pb)),wB=done&&(r.b>r.a||(r.a===r.b&&r.pb>r.pa));
+  const sideL=l=>isTeam(l)?`<span class="cteam tl${wA?' win':done?' lose':''}" data-team="${l}"><span class="cnm">${l}</span>${flagBox(l)}</span>`:`<span class="clbl tl">${koLabelShort(l)}</span>`;
+  const sideR=l=>isTeam(l)?`<span class="cteam tr${wB?' win':done?' lose':''}" data-team="${l}">${flagBox(l)}<span class="cnm">${l}</span></span>`:`<span class="clbl tr">${koLabelShort(l)}</span>`;
+  const mid=done?`<span class="calscore${live?' live':''}">${r.a}<i>-</i>${r.b}</span>`:`<span class="calvs">×</span>`;
+  return `<div class="calm" data-match="${m.id}" style="--acc:${acc}">
+    <div class="calmstatus">${status}</div>
+    <div class="calmteams">${sideL(m.teamA)}${mid}${sideR(m.teamB)}</div>
+    <div class="calmeta">${tag}<span class="calcity">${stadiumOf(m)} · ${m.city}</span></div></div>`;}
 function renderCalendar(){const el=$('calBody');if(!el)return;
   const phases=['Groupes','Seizièmes','Huitièmes','Quarts','Demi-finales','Match pour la 3e place','Finale'].filter(p=>matches.some(m=>m.phase===p));
   const allTeams=Object.values(groups).flat().sort((a,b)=>a.localeCompare(b,'fr'));
@@ -2335,7 +2531,7 @@ function renderStadiums(){const grid=$('stadGrid');
 function openStadium(ck){const s=stadiums[ck];_lastSheet=()=>openStadium(ck);
   const ms=matches.filter(m=>m.city===ck).sort((a,b)=>new Date(a.kickoffUTC)-new Date(b.kickoffUTC));
   const tztoggle=`<div class="tzlocal"><span class="tzll">🕒 Horaires affichés en :</span><div class="tzlseg"><button data-tzlocal="fr" class="${tzMode==='fr'?'on':''}">🇫🇷 Heure France</button><button data-tzlocal="stadium" class="${tzMode==='stadium'?'on':''}">🏟️ Heure du stade</button></div></div>`;
-  const imgHtml=s.image?`<div class="stadimg"><img src="${s.image}" alt="${s.name}" loading="eager"><div class="stadimgcap">${hostCountryFlag(s.country)} <b>${s.name}</b><span>${s.city}, ${s.country}</span></div></div>`:`<div class="stadimg"><div class="noimg">📷 Photo à venir</div></div>`;
+  const imgHtml=s.image?`<div class="stadimg"><img src="${s.image}" alt="${s.name}" loading="eager"><div class="stadimgcap"><b>${s.name}</b><span>${s.city}, ${s.country}</span></div></div>`:`<div class="stadimg"><div class="noimg">📷 Photo à venir</div></div>`;
   const byPhase={};ms.forEach(m=>byPhase[m.phase]=(byPhase[m.phase]||0)+1);
   const phaseTxt=Object.entries(byPhase).map(([p,n])=>`${n} ${p}`).join(' · ');
   const facts=`<div class="factgrid">
@@ -2407,6 +2603,34 @@ function gotoView(v){switchView(v);}
 function heroMatchCard(m){const f=fmtParts(m);const r=RESULTS[m.id]||RESULTS[String(m.id)];const sc=r&&r.a!=null?`${r.a} – ${r.b}`:null;
   const side=t=>isTeam(t)?`<span class="hmside">${flagBox(t)}<b>${t}</b></span>`:`<span class="hmside"><b>${koLabelShort(t)}</b></span>`;
   return `<div class="heromatch" data-match="${m.id}">${side(m.teamA)}<span class="hmmid">${sc?`<span class="hmsc">${sc}</span>`:`<span class="hmvs">VS</span><span class="hmcd" data-countdown="${m.kickoffUTC}" data-kick="${f.time}"></span>`}</span>${side(m.teamB)}<div class="hmsub">🏟️ ${stadiumOf(m)} · ${m.city} — ${f.date} · ${f.time} ${f.zone}</div></div>`;}
+function bestThirdsLive(){
+  // 3es de chaque groupe, classés: pts, diff générale, buts marqués, puis FIFA
+  const thirds=Object.keys(groups).map(g=>{const tb=computeTable(g);return tb[2]?{...tb[2],g}:null;}).filter(Boolean);
+  thirds.sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.bp-a.bp||FIFA[a.t][0]-FIFA[b.t][0]);
+  return thirds.slice(0,8);}
+function renderHomeStandings(){const el=$('homeStandings');if(!el)return;
+  const anyPlayed=matches.some(m=>m.phase==='Groupes'&&scores[m.id]&&scores[m.id][0]!==''&&scores[m.id][0]!=null);
+  const best3=bestThirdsLive();const best3set=new Set(best3.map(x=>x.t));
+  // bloc qualifiés (1ers, 2es, meilleurs 3es)
+  const chip=(t,kind)=>`<span class="qchip ${kind}" data-team="${t}">${flagBox(t,'qfl')}<span>${t}</span></span>`;
+  const firsts=Object.keys(groups).map(g=>{const tb=computeTable(g);return tb[0]?tb[0].t:null;}).filter(Boolean);
+  const seconds=Object.keys(groups).map(g=>{const tb=computeTable(g);return tb[1]?tb[1].t:null;}).filter(Boolean);
+  const qualBlock=`<div class="qualbox">
+    <div class="qualrow"><span class="qlbl q1">1ᵉʳˢ de groupe</span><div class="qchips">${firsts.map(t=>chip(t,'c1')).join('')}</div></div>
+    <div class="qualrow"><span class="qlbl q2">2ᵉˢ de groupe</span><div class="qchips">${seconds.map(t=>chip(t,'c2')).join('')}</div></div>
+    <div class="qualrow"><span class="qlbl q3">8 meilleurs 3ᵉˢ</span><div class="qchips">${best3.map(x=>chip(x.t,'c3')).join('')}</div></div>
+  </div>`;
+  // 12 mini-classements
+  const miniGroup=g=>{const tb=computeTable(g);const col=GCOLORS[g];
+    const rows=tb.map((r,i)=>{const pos=i+1;const q=pos<=2?'q':(pos===3&&best3set.has(r.t))?'q3':'';
+      return `<div class="mgrow ${q}" data-team="${r.t}"><span class="mgpos">${pos}</span>${flagBox(r.t,'mgfl')}<span class="mgnm">${r.t}</span><span class="mgpts">${r.j>0?r.pts:'–'}</span></div>`;}).join('');
+    return `<div class="mgcard"><div class="mghead" style="background:${col};color:${inkFor(col)}">Groupe ${g}</div>${rows}</div>`;}
+  el.innerHTML=`
+    <div class="homesec"><div class="homesec-h"><span>📊 Classement en direct</span>${anyPlayed?'<span class="livetag">● en direct</span>':'<span class="homesec-sub">avant le coup d\'envoi</span>'}</div>
+      <div class="mggrid">${Object.keys(groups).map(miniGroup).join('')}</div></div>
+    <div class="homesec"><div class="homesec-h"><span>🎟️ Qualifiés pour les 16ᵉˢ</span><span class="homesec-sub">${anyPlayed?'selon le classement actuel':'projection'}</span></div>
+      ${qualBlock}</div>`;
+}
 function renderHero(){const el=$('homeHero');if(!el)return;
   const now=Date.now();
   const sorted=matches.slice().sort((a,b)=>new Date(a.kickoffUTC)-new Date(b.kickoffUTC));
@@ -2448,7 +2672,7 @@ function setupInstallBtn(){const b=$('pwaBtn');if(!b)return;
   else if(isiOS){b.style.display='';b.onclick=()=>{const h=$('iosHelp');const open=h.style.display==='none';h.style.display=open?'':'none';
     if(open)h.innerHTML=`<div class="brkinfo" style="text-align:left;margin-top:10px">📲 <b>Sur iPhone/iPad :</b> ouvre ce site dans <b>Safari</b>, touche <b>Partager</b> (carré avec flèche ↑) puis <b>« Sur l'écran d'accueil »</b>. L'app s'installera avec son icône ⚽.</div>`;};}
   else b.style.display='none';}
-const SECONDARY={standings:['📊','Classmt'],compare:['⚖️','Duel'],stadiums:['🏟️','Stades'],travel:['✈️','Trajets']};
+const SECONDARY={worldmap:['🌍','Carte'],standings:['📊','Classmt'],compare:['⚖️','Duel'],stadiums:['🏟️','Stades'],travel:['✈️','Trajets']};
 const _scrollPos={};let _calScrolled=false;
 function switchView(v,fromPop){if(!$('view-'+v))return;
   hideMore();
@@ -2463,7 +2687,9 @@ function switchView(v,fromPop){if(!$('view-'+v))return;
   if(v==='travel')renderTravel();
   if(v==='ko')renderKO();
   if(v==='calendar')renderCalendar();
-  if(v==='teams'){worldBy='groupe';worldRegion='all';worldGroup='all';renderWorld();renderHero();GLOBE.resume();}else GLOBE.pause();
+  if(v==='teams'){renderHero();renderHomeStandings();GLOBE.pause();}
+  else if(v==='worldmap'){worldBy='groupe';worldRegion='all';worldGroup='all';renderWorld();GLOBE.resume();}
+  else GLOBE.pause();
   if(v==='calendar'&&!_calScrolled){_calScrolled=true;setTimeout(()=>{const b=$('calToday');if(b)b.click();},90);}
   else window.scrollTo({top:_scrollPos[v]||0,behavior:'auto'});}
 function hideMore(){const m=$('moreMenu');if(m)m.style.display='none';}
@@ -2477,7 +2703,7 @@ document.addEventListener('click',e=>{const m=$('moreMenu');if(m&&m.style.displa
 
 /* KO mode toggle */
 $('koMode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
-  koMode=b.dataset.m;if(koMode==='bracket'){_brkGoto='all';try{history.pushState({v:'ko',brk:1},'');}catch(_){}}document.querySelectorAll('#koMode button').forEach(x=>x.classList.toggle('on',x===b));renderKO();});
+  koMode=b.dataset.m;document.querySelectorAll('#koMode button').forEach(x=>x.classList.toggle('on',x===b));renderKO();});
 
 /* TZ */
 $('tzseg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.dataset.tz===tzMode)return;
@@ -2505,6 +2731,10 @@ document.addEventListener('click',e=>{
   const ic=e.target.closest('[data-ics]');
   if(ic){const v=ic.dataset.ics;if(v==='*fav*')exportFavICS();else exportTeamICS(v);
     const old=ic.textContent;ic.textContent='✓ Téléchargé !';setTimeout(()=>ic.textContent=old,1600);return;}
+  const pth=e.target.closest('[data-path]');
+  if(pth){const t=pth.dataset.path;closeSheet();brkTeam=t;koMode='bracket';
+    switchView('ko');document.querySelectorAll('#koMode button').forEach(x=>x.classList.toggle('on',x.dataset.m==='bracket'));
+    renderKO();return;}
   const icm=e.target.closest('[data-icsmatch]');
   if(icm){const mm=matches.find(x=>+x.id===+icm.dataset.icsmatch);if(mm){downloadICS([mm],'match-'+mm.id+'-cm2026.ics','CM2026 · '+mm.teamA+' × '+mm.teamB);
     const old=icm.textContent;icm.textContent='✓ Ajouté au calendrier';setTimeout(()=>icm.textContent=old,1600);}return;}
@@ -2548,6 +2778,7 @@ renderWorld();renderTeams();renderFav();renderGroupPicker();renderStandPicker();
 loadResults();setInterval(loadResults,60000);
 setInterval(tickCountdowns,1000);
 renderHero();
+renderHomeStandings();
 updateLiveUI();setInterval(updateLiveUI,60000);
 const _hp=(location.hash.match(/#p=(1[0-3]{48}-[0-2]{32})/)||[])[1];
 try{history.replaceState({v:'teams'},'','#teams');}catch(_){}
