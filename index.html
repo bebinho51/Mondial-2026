@@ -238,6 +238,23 @@ h1.title{font-family:'Anton';font-size:clamp(38px,8vw,82px);line-height:.92;lett
 .travelsummary .fl svg{width:100%;height:100%;display:block}
 .travelsummary .nm{font-family:'Anton';font-size:22px;text-transform:uppercase;line-height:1}
 .travelsummary .kmbig{margin-left:auto;text-align:right}
+.kmsplit{display:flex;align-items:center;gap:12px;justify-content:center;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:12px;margin-bottom:12px}
+.kmcol{text-align:center}
+.kmcol b{font-family:'Anton';font-size:22px;display:block;line-height:1}
+.kmcol span{font-family:'Archivo Narrow';font-weight:700;font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.kmcol.ko b{color:var(--gold)}
+.kmplus{font-family:'Anton';font-size:20px;color:var(--muted)}
+.korounds{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:13px;margin-bottom:14px}
+.korhead{font-family:'Anton';font-size:14px;margin-bottom:3px}
+.korsub{display:block;font-family:'Archivo Narrow';font-weight:600;font-size:11px;color:var(--muted);margin:2px 0 9px}
+.korrow{display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:8px;background:var(--panel2);margin-bottom:5px}
+.korrow:last-child{margin-bottom:0}
+.korrow.tot{background:rgba(255,207,63,.1);border:1px solid rgba(255,207,63,.3)}
+.korph{font-family:'Archivo';font-weight:800;font-size:12.5px;flex:0 0 auto;min-width:96px}
+.korcity{flex:1;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.korkm{font-family:'Anton';font-size:13px;color:var(--gold);flex:0 0 auto}
+.korrow.tot .korkm{font-size:15px}
+.konote{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:13px;font-size:12.5px;color:var(--muted);margin-bottom:14px;text-align:center}
 .travelsummary .kmbig b{font-family:'Anton';font-size:30px;color:var(--gold);display:block;line-height:1}
 .travelsummary .kmbig span{font-size:11px;color:var(--muted)}
 .travelrank{display:flex;flex-direction:column;gap:6px;margin-top:18px}
@@ -2118,6 +2135,26 @@ let travelData=null,travelG='all',travelConf='all',travelSort='desc',travelSel=n
 function computeTravel(){if(travelData)return travelData;
   travelData=Object.values(groups).flat().map(t=>{const r=teamRoute(t);return {t,route:r,km:routeKm(r),g:groupOf(t),conf:EXTRA[t][1]};});
   return travelData;}
+function koLegs(team){
+  // retourne les étapes KO probables (selon classement live) avec villes + km depuis l'étape précédente
+  const RES=resolveReal();
+  let cur=KO.find(m=>m.phase==='Seizièmes'&&(RES[m.matchNumber]||[]).includes(team));
+  if(!cur)return null; // pas (encore) qualifié
+  const PHL={'Seizièmes':'16ᵉ de finale','Huitièmes':'8ᵉ de finale','Quarts':'Quart de finale','Demi-finales':'Demi-finale','Match pour la 3e place':'3ᵉ place','Finale':'Finale'};
+  const legs=[];let step=0;
+  // ville de départ = dernière ville de groupe de l'équipe
+  const grpMs=matches.filter(m=>m.phase==='Groupes'&&(m.teamA===team||m.teamB===team)).sort((a,b)=>new Date(a.kickoffUTC)-new Date(b.kickoffUTC));
+  let prevCity=grpMs.length?grpMs[grpMs.length-1].city:cur.city;
+  while(cur){
+    const km=Math.round(kmDist(cities[prevCity],cities[cur.city]));
+    legs.push({phase:cur.phase,label:PHL[cur.phase]||cur.phase,city:cur.city,stad:stadiumOf(cur),km,from:prevCity,mn:cur.matchNumber});
+    prevCity=cur.city;
+    if(cur.phase==='Finale')break;
+    const nxt=KO.find(m=>m.teamA===`Vainqueur M${cur.matchNumber}`||m.teamB===`Vainqueur M${cur.matchNumber}`);
+    if(!nxt)break;cur=nxt;step++;if(step>6)break;
+  }
+  return legs;}
+
 function renderTravel(){
   const all=computeTravel();
   if(!travelSel)travelSel=all.slice().sort((a,b)=>b.km-a.km)[0].t;
@@ -2139,7 +2176,17 @@ function renderTravel(){
   if(!list.find(d=>d.t===travelSel))travelSel=list.length?list[0].t:travelSel;
   const sel=all.find(d=>d.t===travelSel);
   const legs=[];for(let i=1;i<sel.route.length;i++)legs.push({a:sel.route[i-1],b:sel.route[i],km:Math.round(kmDist(cities[sel.route[i-1]],cities[sel.route[i]]))});
-  $('travelSummary').innerHTML=`<div class="travelsummary" data-team="${sel.t}">${flagBox(sel.t)}<div><div class="nm">${sel.t}</div><div style="color:var(--muted);font-size:12px">Groupe ${sel.g} · ${sel.conf} · FIFA #${FIFA[sel.t][0]}</div></div><div class="kmbig"><b>${sel.km.toLocaleString('fr-FR')}</b><span>km · phase de groupes</span></div></div>`;
+  // parcours KO probable
+  const ko=koLegs(sel.t);
+  const koKm=ko?ko.reduce((a,l)=>a+l.km,0):0;
+  const totalKm=sel.km+koKm;
+  const koPhaseInfo=ko?(()=>{const g=groupOf(sel.t);const tb=computeTable(g);const pos=tb.findIndex(r=>r.t===sel.t)+1;return pos<=2?'qualifié '+pos+'ᵉ':'repêché (3ᵉ)';})():null;
+  $('travelSummary').innerHTML=`<div class="travelsummary" data-team="${sel.t}">${flagBox(sel.t)}<div><div class="nm">${sel.t}</div><div style="color:var(--muted);font-size:12px">Groupe ${sel.g} · ${sel.conf} · FIFA #${FIFA[sel.t][0]}</div></div><div class="kmbig"><b>${totalKm.toLocaleString('fr-FR')}</b><span>km au total${ko?' · parcours probable':' · phase de groupes'}</span></div></div>
+    ${ko?`<div class="kmsplit"><div class="kmcol"><b>${sel.km.toLocaleString('fr-FR')}</b><span>km · groupes</span></div><div class="kmplus">+</div><div class="kmcol ko"><b>${koKm.toLocaleString('fr-FR')}</b><span>km · phase finale</span></div></div>
+    <div class="korounds"><div class="korhead">🛤️ Parcours probable en phase finale <span class="korsub">selon le classement en direct (${koPhaseInfo})</span></div>
+      ${ko.map(l=>`<div class="korrow" data-team2="${sel.t}"><span class="korph">${l.label}</span><span class="korcity">🏟️ ${l.city}</span>${l.km?`<span class="korkm">✈️ +${l.km.toLocaleString('fr-FR')} km</span>`:'<span class="korkm">sur place</span>'}</div>`).join('')}
+      <div class="korrow tot"><span class="korph">Total phase finale</span><span class="korcity"></span><span class="korkm">✈️ ${koKm.toLocaleString('fr-FR')} km</span></div></div>`
+    :`<div class="konote">🔒 Parcours en phase finale affiché dès que l'équipe est qualifiée (actuellement ${(()=>{const tb=computeTable(sel.g);const p=tb.findIndex(r=>r.t===sel.t)+1;return p+'ᵉ du groupe '+sel.g;})()}).</div>`}`;
   const selMs=matches.filter(m=>m.phase==='Groupes'&&(m.teamA===sel.t||m.teamB===sel.t)).sort((a,b)=>new Date(a.kickoffUTC)-new Date(b.kickoffUTC));
   const _legMin=legs.reduce((a,l)=>a+(l.km>=40?Math.round((l.km/800+0.55)*60/5)*5:0),0);
   $('travelMap').innerHTML=buildNAMap(selMs.map((m,i)=>({city:m.city,popup:matchPopup(sel.t,m,i)})),'route')+`<div class="legbox">${legs.map((l,i)=>`<div class="leg"><span class="n">${i+1}</span>${l.a} <span class="arr">→</span> ${l.b}<span class="d">${l.km.toLocaleString('fr-FR')} km${flightTime(l.km)?` · ✈️ ${flightTime(l.km)}`:''}</span></div>`).join('')}${_legMin?`<div class="leg legtot"><span class="n">Σ</span>Temps de vol cumulé<span class="d">✈️ ≈ ${Math.floor(_legMin/60)} h${_legMin%60?' '+String(_legMin%60).padStart(2,'0'):''}</span></div>`:''}</div>`;
