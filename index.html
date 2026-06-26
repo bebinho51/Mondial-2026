@@ -662,35 +662,55 @@ canvas.confetti{position:fixed;inset:0;z-index:300;pointer-events:none}
 .qchip .qfl{width:22px;height:15px;border-radius:2px;overflow:hidden;flex:0 0 auto}
 .qchip .qfl svg{width:100%;height:100%;display:block}
 /* === Scénarios de qualification === */
-.scnote{font-size:12.5px;color:var(--muted);margin-bottom:12px;line-height:1.5}
-.cutbox{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:14px}
-.cuttitle{font-family:'Anton';font-size:15px;margin-bottom:9px}
-.cutsub{font-family:'Archivo Narrow';font-weight:600;font-size:11px;color:var(--muted);text-transform:none;letter-spacing:0;display:block;margin-top:1px}
-.cutrow{display:flex;align-items:center;gap:8px;padding:6px 7px;border-radius:8px}
-.cutrow.cin{background:rgba(31,206,130,.08)}
-.cutrow.cout{opacity:.6}
+.scnote{font-size:12px;color:var(--muted);margin:10px 0 12px;line-height:1.5}
+.cutbox{background:linear-gradient(135deg,#1a2410,#241f0a);border:1px solid rgba(255,207,63,.3);border-radius:14px;padding:13px;margin-bottom:14px}
+.cuttitle{font-family:'Anton';font-size:16px}
+.cutsub2{font-family:'Archivo Narrow';font-weight:600;font-size:11px;color:var(--muted);margin:2px 0 9px}
+.cutrow{display:flex;align-items:center;gap:8px;padding:6px 7px;border-radius:8px;cursor:pointer}
+.cutrow.cin{background:rgba(31,206,130,.1)}
+.cutrow.cout{opacity:.55}
 .cutpos{font-family:'Anton';font-size:13px;width:18px;color:var(--muted)}
 .cutrow.cin .cutpos{color:var(--grass)}
 .cutfl{width:24px;height:16px;border-radius:2px;overflow:hidden;flex:0 0 auto;box-shadow:0 1px 2px rgba(0,0,0,.4)}
 .cutfl svg{width:100%;height:100%;display:block}
 .cutnm{flex:1;font-weight:700;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cutg{font-family:'Archivo Narrow';font-size:11px;color:var(--muted)}
-.cutpts{font-family:'Anton';font-size:13px;min-width:42px;text-align:right}
+.cutpts{font-family:'Anton';font-size:14px;min-width:40px;text-align:right}.cutpts small{font-size:9px;color:var(--muted);margin-left:1px}
 .cutgd{font-family:'Archivo Narrow';font-weight:700;font-size:11.5px;color:var(--muted);min-width:30px;text-align:right}
-.cutline{text-align:center;font-family:'Archivo Narrow';font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);padding:6px 0 3px;border-bottom:2px dashed rgba(255,207,63,.4);margin:3px 0 5px}
-.scgrid{display:flex;flex-direction:column;gap:10px}
-.sccard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--sc);border-radius:12px;padding:11px 13px;cursor:pointer;transition:var(--fast)}
-.sccard:active{transform:scale(.99)}
-.schead{display:flex;align-items:center;gap:10px}
-.scfl{width:34px;height:23px;border-radius:4px;overflow:hidden;flex:0 0 auto;box-shadow:0 2px 6px rgba(0,0,0,.4)}
-.scfl svg{width:100%;height:100%;display:block}
-.scinfo{flex:1;min-width:0}
-.scname{font-family:'Anton';font-size:16px;line-height:1.1}
-.scdetail{font-size:11.5px;color:var(--muted);margin-top:2px}
-.scbadge{font-family:'Archivo Narrow';font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:.04em;padding:3px 9px;border-radius:999px;flex:0 0 auto}
-.scneed{margin-top:10px;display:flex;flex-direction:column;gap:5px;border-top:1px solid var(--line);padding-top:9px}
-.scn{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;padding:5px 9px;background:var(--panel2);border-radius:8px}
-.scn.ok{background:rgba(31,206,130,.1)}
+.cutline{text-align:center;font-family:'Archivo Narrow';font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);padding:7px 0 4px;border-bottom:2px dashed rgba(255,207,63,.45);margin:4px 0 6px}
+.scfilters{display:flex;gap:7px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;margin-bottom:4px}
+.scfilters::-webkit-scrollbar{display:none}
+.scfilters button{flex:0 0 auto;background:var(--panel2);border:1px solid var(--line);color:var(--muted);font-family:'Archivo';font-weight:800;font-size:12.5px;padding:8px 13px;border-radius:999px;cursor:pointer;transition:var(--fast);display:flex;align-items:center;gap:6px}
+.scfilters button span{font-size:11px;background:rgba(255,255,255,.08);border-radius:999px;padding:0 7px;min-width:18px;text-align:center}
+.scfilters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.scfilters button.on span{background:rgba(0,0,0,.15)}
+.scgroups{display:flex;flex-direction:column;gap:9px}
+.scgroup{background:var(--panel);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.scghead{display:flex;align-items:center;gap:9px;padding:11px 13px;cursor:pointer;background:#0d1428}
+.scgchev{color:var(--muted);font-size:11px;transition:transform .25s}
+.scgroup.col .scgchev{transform:rotate(-90deg)}
+.scgroup.col .scgbody{display:none}
+.scgttl{font-family:'Anton';font-size:15px}
+.scgdone,.scglive{margin-left:auto;font-family:'Archivo Narrow';font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:999px}
+.scgdone{color:var(--muted);background:var(--panel2)}
+.scglive{color:var(--accent);background:rgba(255,46,99,.12)}
+.scgbody{padding:6px}
+.scrow{border-radius:9px;overflow:hidden;margin-bottom:4px}
+.scrow:last-child{margin-bottom:0}
+.scrmain{display:flex;align-items:center;gap:9px;padding:9px 10px;cursor:pointer;background:var(--panel2);transition:var(--fast)}
+.scrmain:active{transform:scale(.99)}
+.scrpos{font-family:'Anton';font-size:13px;color:var(--muted);width:14px;flex:0 0 auto}
+.scrfl{width:28px;height:19px;border-radius:3px;overflow:hidden;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.scrfl svg{width:100%;height:100%;display:block}
+.scrnm{flex:1;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scrbadge{font-family:'Archivo Narrow';font-weight:800;font-size:9.5px;text-transform:uppercase;letter-spacing:.03em;padding:3px 8px;border-radius:999px;flex:0 0 auto}
+.scrchev{color:var(--muted);font-size:12px;transition:transform .25s;flex:0 0 auto}
+.scrow.open .scrchev{transform:rotate(180deg)}
+.scrgo{color:var(--muted);font-size:18px;font-weight:800;flex:0 0 auto}
+.scrdetail{display:none;flex-direction:column;gap:5px;padding:9px 10px}
+.scrow.open .scrdetail{display:flex}
+.scn{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;padding:7px 10px;background:var(--panel2);border-radius:8px}
+.scn.ok{background:rgba(31,206,130,.12);border:1px solid rgba(31,206,130,.25)}
 .scnk{color:var(--ink)}
 .scnv{font-family:'Archivo Narrow';font-weight:700;color:var(--muted);text-align:right;white-space:nowrap}
 .scn.ok .scnv{color:var(--grass)}
@@ -2746,29 +2766,61 @@ function renderHomeStandings(){const el=$('homeStandings');if(!el)return;
     <div class="homesec"><div class="homesec-h"><span>🎟️ Qualifiés pour les 16ᵉˢ</span><span class="homesec-sub">${anyPlayed?'selon le classement actuel':'projection'}</span></div>
       ${qualBlock}</div>
     ${scenariosBlock()}`;
+  // === interactions scénarios ===
+  const fb=$('scFilters');
+  if(fb){fb.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{
+    fb.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+    const f=b.dataset.f;const grp=$('scGroups');
+    grp.querySelectorAll('.scrow').forEach(r=>{r.style.display=(f==='all'||r.dataset.fcat===f)?'':'none';});
+    // masque un groupe si toutes ses lignes sont cachées
+    grp.querySelectorAll('.scgroup').forEach(gr=>{const vis=[...gr.querySelectorAll('.scrow')].some(r=>r.style.display!=='none');gr.style.display=vis?'':'none';});
+  });}
+  const grp=$('scGroups');
+  if(grp){
+    grp.querySelectorAll('[data-grptoggle]').forEach(h=>h.onclick=()=>h.closest('.scgroup').classList.toggle('col'));
+    grp.querySelectorAll('[data-toggle]').forEach(h=>h.onclick=()=>h.closest('.scrow').classList.toggle('open'));
+  }
 }
 function scenariosBlock(){
   const sc=qualScenarios();
-  const order={race:0,'qualif-soon':1,'third-in':2,'third-out':2};
-  const racing=sc.filter(s=>['race','qualif-soon','third-in','third-out'].includes(s.status))
-    .sort((a,b)=>order[a.status]-order[b.status]||a.posNow-b.posNow);
-  const qualified=sc.filter(s=>s.status==='qualif').sort((a,b)=>a.g.localeCompare(b.g)||a.posNow-b.posNow);
-  const eliminated=sc.filter(s=>s.status==='out').sort((a,b)=>a.g.localeCompare(b.g));
-  // course aux 3es : tableau de coupure
+  const counts={race:0,qualif:0,out:0,third:0};
+  sc.forEach(s=>{if(s.status==='qualif')counts.qualif++;else if(s.status==='out')counts.out++;else if(s.status==='third-in'||s.status==='third-out')counts.third++;else counts.race++;});
+  const anyData=sc.length;if(!anyData)return '';
+  // course aux 3es
   const thirds=Object.keys(groups).map(g=>{const tb=computeTable(g);return tb[2]?{...tb[2],g}:null;}).filter(Boolean)
     .sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.bp-a.bp||FIFA[a.t][0]-FIFA[b.t][0]);
-  const anyData=racing.length||qualified.length||eliminated.length;
-  if(!anyData)return '';
-  const cutHtml=thirds.length?`<div class="cutbox"><div class="cuttitle">🥉 Course aux 8 meilleurs 3ᵉˢ <span class="cutsub">ligne de qualification après le 8ᵉ</span></div>
-    ${thirds.map((x,i)=>`<div class="cutrow ${i<8?'cin':'cout'}" data-team="${x.t}"><span class="cutpos">${i+1}</span>${flagBox(x.t,'cutfl')}<span class="cutnm">${x.t}</span><span class="cutg">Gr.${x.g}</span><span class="cutpts">${x.pts} pts</span><span class="cutgd">${x.gd>=0?'+':''}${x.gd}</span></div>${i===7?'<div class="cutline">— ligne de qualification —</div>':''}`).join('')}</div>`:'';
-  const compactChip=s=>`<span class="qchip ${s.status==='qualif'?'c1':'c0'}" data-team="${s.team}">${flagBox(s.team,'qfl')}<span>${s.team}</span><small>${s.g}${s.posNow?'·'+s.posNow+'ᵉ':''}</small></span>`;
-  const section=(title,arr,cls)=>arr.length?`<div class="scsub ${cls}"><div class="scsubh">${title} <span>${arr.length}</span></div><div class="scchips">${arr.map(compactChip).join('')}</div></div>`:'';
+  const cutHtml=thirds.length?`<div class="cutbox"><div class="cuttitle">🥉 Course aux 8 meilleurs 3ᵉˢ</div><div class="cutsub2">Les 8 premiers se qualifient · départage pts → diff → buts → FIFA</div>
+    ${thirds.map((x,i)=>`<div class="cutrow ${i<8?'cin':'cout'}" data-team="${x.t}"><span class="cutpos">${i+1}</span>${flagBox(x.t,'cutfl')}<span class="cutnm">${x.t}</span><span class="cutg">Gr.${x.g}</span><span class="cutpts">${x.pts}<small>pts</small></span><span class="cutgd">${x.gd>=0?'+':''}${x.gd}</span></div>${i===7?'<div class="cutline">✂️ ligne de qualification</div>':''}`).join('')}</div>`:'';
+  // filtres (compteurs cliquables)
+  const filterBar=`<div class="scfilters" id="scFilters">
+    <button data-f="all" class="on">Tout <span>${sc.length}</span></button>
+    <button data-f="race">⚔️ En course <span>${counts.race+counts.third}</span></button>
+    <button data-f="qualif">✅ Qualifiés <span>${counts.qualif}</span></button>
+    <button data-f="out">❌ Éliminés <span>${counts.out}</span></button>
+  </div>`;
+  // liste par groupe, chaque équipe = ligne avec statut, dépliable pour le détail
+  const STMETA={qualif:['#1fce82','✓ Qualifié','qualif'],'qualif-soon':['#1fce82','Quasi qualifié','race'],'third-in':['#ffcf3f','3ᵉ repêché','race'],'third-out':['#ff5a7a','3ᵉ à la lutte','race'],race:['#3a86ff','En course','race'],out:['#ff2e63','Éliminé','out']};
+  const byGroup=Object.keys(groups).map(g=>{
+    const rows=sc.filter(s=>s.g===g).sort((a,b)=>a.posNow-b.posNow);
+    const groupSettled=rows.every(s=>s.status==='qualif'||s.status==='out');
+    const rowsHtml=rows.map(s=>{const m=STMETA[s.status]||['#8a93b5','',''];
+      const hasDetail=s.need.length>0;
+      const needHtml=hasDetail?`<div class="scrdetail">${s.need.map(n=>`<div class="scn ${n.ok?'ok':''}"><span class="scnk">${n.t}</span><span class="scnv">${n.v}</span></div>`).join('')}</div>`:'';
+      return `<div class="scrow" data-fcat="${m[2]}" data-team2="${s.team}" data-has="${hasDetail?1:0}">
+        <div class="scrmain" ${hasDetail?'data-toggle="1"':`data-team="${s.team}"`}>
+          <span class="scrpos">${s.posNow}</span>${flagBox(s.team,'scrfl')}
+          <span class="scrnm">${s.team}</span>
+          <span class="scrbadge" style="background:${m[0]};color:${inkFor(m[0])}">${m[1]}</span>
+          ${hasDetail?'<span class="scrchev">▾</span>':'<span class="scrgo" data-team="'+s.team+'">›</span>'}
+        </div>${needHtml}</div>`;}).join('');
+    return `<div class="scgroup" data-fgrp="${g}" data-settled="${groupSettled?1:0}">
+      <div class="scghead" data-grptoggle="${g}"><span class="scgchev">▾</span><span class="scgttl" style="color:${GCOLORS[g]}">Groupe ${g}</span>${groupSettled?'<span class="scgdone">terminé</span>':'<span class="scglive">en cours</span>'}</div>
+      <div class="scgbody">${rowsHtml}</div></div>`;}).join('');
   return `<div class="homesec" id="scenSec"><div class="homesec-h"><span>🔮 Scénarios de qualification</span><span class="homesec-sub">classement en direct</span></div>
-    <div class="scnote">Ce qui qualifierait chaque équipe encore en lice. ✅ = la met en position qualificative.</div>
     ${cutHtml}
-    ${racing.length?`<div class="scsubh big">⚔️ Encore en course <span>${racing.length}</span></div><div class="scgrid">${racing.map(scenarioCard).join('')}</div>`:''}
-    ${section('✅ Déjà qualifiées',qualified,'qok')}
-    ${section('❌ Éliminées',eliminated,'qout')}</div>`;
+    ${filterBar}
+    <div class="scnote">Touchez une équipe avec ▾ pour voir ce qui la qualifierait. ✅ = scénario qualificatif.</div>
+    <div class="scgroups" id="scGroups">${byGroup}</div></div>`;
 }
 function renderHero(){const el=$('homeHero');if(!el)return;
   const now=Date.now();
