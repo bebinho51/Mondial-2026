@@ -2748,6 +2748,34 @@ function outcomeFor(team,res){
   // les AUTRES matchs encore à jouer du groupe : on garde le classement actuel (on ne simule qu'eux à 0-0 pour neutralité)
   const tb=simTable(g,overrides);const pos=posInGroup(team,tb);
   return {pos,table:tb};}
+// Un 3ème (groupe terminé) est-il mathématiquement hors du top 8 des meilleurs 3èmes ?
+function thirdMathEliminated(team){
+  const g=groupOf(team);const tb=computeTable(g);
+  if(tb.length<3||tb[2].t!==team)return false;
+  const me=tb[2];if(groupMatchesLeft(g).length>0)return false; // groupe pas fini → encore possible
+  // pour chaque autre groupe, le MEILLEUR score possible de son 3ème final
+  let surelyAhead=0;
+  Object.keys(groups).forEach(og=>{if(og===g)return;
+    const otb=computeTable(og);const o3=otb[2];if(!o3)return;
+    const oDone=groupMatchesLeft(og).length===0;
+    let better;
+    if(oDone){
+      // 3ème figé : comparaison directe (pts, diff, buts, FIFA)
+      better=cmpThird(o3,me)<0; // o3 strictement devant me
+    }else{
+      // groupe en cours : le 3ème final de og pourrait être très fort.
+      // Best case pour og: son 3ème final peut avoir jusqu'à (pts actuels du 3ème + victoires restantes)...
+      // Approche sûre : si le 3ème ACTUEL de og est déjà devant me, ou peut le dépasser, on compte comme menace.
+      // On considère qu'un groupe non terminé peut TOUJOURS produire un 3ème ≥ me (prudent) SAUF si même son meilleur cas reste derrière.
+      const bestPts=o3.pts+3*Math.min(groupMatchesLeft(og).filter(m=>m.teamA===o3.t||m.teamB===o3.t).length,1);
+      better = bestPts>me.pts || (bestPts===me.pts); // peut égaler ou dépasser → menace potentielle
+    }
+    if(better)surelyAhead++;
+  });
+  // éliminé si au moins 8 autres 3èmes sont (ou peuvent être) devant
+  return surelyAhead>=8;}
+function cmpThird(a,b){return (b.pts-a.pts)||(b.gd-a.gd)||(b.bp-a.bp)||(FIFA[a.t][0]-FIFA[b.t][0]);}
+
 function qualScenarios(){
   const all=Object.values(groups).flat();
   const out=[];
@@ -2760,8 +2788,10 @@ function qualScenarios(){
       // groupe terminé : 1/2 qualifié, 3 dépend des autres 3es, 4 éliminé
       if(posNow<=2){status='qualif';detail=`Qualifié — ${posNow}ᵉʳ du groupe ${g}`;}
       else if(posNow===3){const b3=bestThirdsLive();const inq=b3.some(x=>x.t===team);
-        status=inq?'third-in':'third-out';
-        detail=inq?`3ᵉ du groupe ${g} — actuellement repêché (dans les 8 meilleurs 3ᵉˢ)`:`3ᵉ du groupe ${g} — actuellement hors des 8 meilleurs 3ᵉˢ`;}
+        const elim=thirdMathEliminated(team);
+        if(elim){status='out';detail=`3ᵉ du groupe ${g} — éliminé (ne peut plus entrer dans les 8 meilleurs 3ᵉˢ)`;}
+        else if(inq){status='third-in';detail=`3ᵉ du groupe ${g} — actuellement repêché (dans les 8 meilleurs 3ᵉˢ)`;}
+        else{status='third-out';detail=`3ᵉ du groupe ${g} — hors des 8 meilleurs 3ᵉˢ, en attente des autres groupes`;}}
       else{status='out';detail=`4ᵉ du groupe ${g} — éliminé`;}
     }else if(left){
       // il reste le dernier match : calcule W/D/L
@@ -2774,8 +2804,9 @@ function qualScenarios(){
       // statut résumé : meilleur cas
       const best=Math.min(w.pos,d.pos,l.pos);
       if(best<=2&&w.pos<=2&&d.pos<=2&&l.pos<=2)status='qualif-soon';
+      else if(best>=4)status='out',detail=`Actuellement ${posNow}ᵉ du groupe ${g} — ne peut plus se qualifier`;
       else status='race';
-      detail=`Actuellement ${posNow}ᵉ du groupe ${g} · dernier match vs ${opp}`;
+      if(status!=='out')detail=`Actuellement ${posNow}ᵉ du groupe ${g} · dernier match vs ${opp}`;
     }else{status='race';detail=`${posNow}ᵉ du groupe ${g}`;}
     out.push({team,g,posNow,status,detail,need});
   });
