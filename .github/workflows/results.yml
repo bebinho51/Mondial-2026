@@ -1,13 +1,10 @@
-name: Mise à jour des résultats
+name: Maj resultats
 on:
   schedule:
-    - cron: '*/10 * * * *'   # toutes les 10 min (heure UTC)
-  workflow_dispatch:          # bouton "Run workflow" manuel
+    - cron: '*/10 * * * *'   # toutes les 10 minutes
+  workflow_dispatch:          # permet le bouton "Run workflow" manuel
 permissions:
   contents: write
-concurrency:
-  group: results
-  cancel-in-progress: true
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -15,17 +12,22 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - name: Récupérer les scores
-        run: node fetch-results.mjs
-      - name: Publier results.json si modifié
+          node-version: 20
+      # Source gratuite sans cle (buts, pas de passes) :
+      - run: node fetch-results.mjs
+      # --- Variante AVEC passeurs (API-Football) : commente la ligne au-dessus,
+      #     decommente les 3 lignes ci-dessous, et ajoute le secret APIFOOTBALL_KEY.
+      # - run: node fetch-apifootball.mjs
+      #   env:
+      #     APIFOOTBALL_KEY: ${{ secrets.APIFOOTBALL_KEY }}
+      - name: Commit si changement
         run: |
-          if ! git diff --quiet -- results.json; then
-            git config user.name "results-bot"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain results.json)" ]; then
+            git config user.name "github-actions"
+            git config user.email "actions@github.com"
             git add results.json
-            git commit -m "résultats $(date -u +%FT%TZ)"
+            git commit -m "maj resultats"
             git push
           else
-            echo "Aucun changement."
+            echo "Aucun changement"
           fi
